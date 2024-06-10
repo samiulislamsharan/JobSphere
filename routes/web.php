@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
 Route::get('/account/register', [AccountController::class, 'registration'])->name('account.registration');
 Route::post('/account/registerUser', [AccountController::class, 'registerUser'])->name('account.registerUser');
+
 Route::get('/account/login', [AccountController::class, 'login'])->name('account.login');
+
+Route::post('/account/auth', [AccountController::class, 'authenticate'])->name('account.auth');
+
+Route::get('/account/profile', [AccountController::class, 'profile'])->name('account.profile');
