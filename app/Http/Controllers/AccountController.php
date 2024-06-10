@@ -78,3 +78,9 @@ class AccountController extends Controller
                 ->withInput($request->only('email'));
         }
     }
+
+    public function profile()
+    {
+        return view('front.account.profile');
+    }
+}
