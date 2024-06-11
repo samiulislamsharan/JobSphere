@@ -26,3 +26,5 @@ Route::get('/account/login', [AccountController::class, 'login'])->name('account
 Route::post('/account/auth', [AccountController::class, 'authenticate'])->name('account.auth');
 
 Route::get('/account/profile', [AccountController::class, 'profile'])->name('account.profile');
+
+Route::get('/account/logout', [AccountController::class, 'logout'])->name('account.logout');
