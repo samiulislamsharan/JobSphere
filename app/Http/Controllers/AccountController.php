@@ -83,4 +83,11 @@ class AccountController extends Controller
     {
         return view('front.account.profile');
     }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('account.showLogin');
+    }
 }
