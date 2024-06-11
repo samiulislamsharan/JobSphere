@@ -22,20 +22,21 @@
                         <div class="card-body  p-4">
                             <h3 class="fs-4 mb-1">My Profile</h3>
                             <div class="mb-4">
-                                <label for="" class="mb-2">Name*</label>
-                                <input type="text" placeholder="Enter Name" class="form-control" value="">
+                                <label for="name" class="mb-2">Name*</label>
+                                <input type="text" id="name" placeholder="Enter Name" class="form-control"
+                                    value="">
                             </div>
                             <div class="mb-4">
-                                <label for="" class="mb-2">Email*</label>
-                                <input type="text" placeholder="Enter Email" class="form-control">
+                                <label for="email" class="mb-2">Email*</label>
+                                <input type="email" id="email" placeholder="Enter Email" class="form-control">
                             </div>
                             <div class="mb-4">
-                                <label for="" class="mb-2">Designation*</label>
-                                <input type="text" placeholder="Designation" class="form-control">
+                                <label for="designation" class="mb-2">Designation*</label>
+                                <input type="text" id="designation" placeholder="Designation" class="form-control">
                             </div>
                             <div class="mb-4">
-                                <label for="" class="mb-2">Mobile*</label>
-                                <input type="text" placeholder="Mobile" class="form-control">
+                                <label for="mobile" class="mb-2">Mobile*</label>
+                                <input type="number" id="mobile" placeholder="Mobile" class="form-control">
                             </div>
                         </div>
                         <div class="card-footer  p-4">
@@ -47,16 +48,17 @@
                         <div class="card-body p-4">
                             <h3 class="fs-4 mb-1">Change Password</h3>
                             <div class="mb-4">
-                                <label for="" class="mb-2">Old Password*</label>
-                                <input type="password" placeholder="Old Password" class="form-control">
+                                <label for="old-password" class="mb-2">Old Password*</label>
+                                <input type="password" id="old-password" placeholder="Old Password" class="form-control">
                             </div>
                             <div class="mb-4">
-                                <label for="" class="mb-2">New Password*</label>
-                                <input type="password" placeholder="New Password" class="form-control">
+                                <label for="new-password" class="mb-2">New Password*</label>
+                                <input type="password" id="new-password" placeholder="New Password" class="form-control">
                             </div>
                             <div class="mb-4">
-                                <label for="" class="mb-2">Confirm Password*</label>
-                                <input type="password" placeholder="Confirm Password" class="form-control">
+                                <label for="confirm-password" class="mb-2">Confirm Password*</label>
+                                <input type="password" id="confirm-password" placeholder="Confirm Password"
+                                    class="form-control">
                             </div>
                         </div>
                         <div class="card-footer  p-4">
