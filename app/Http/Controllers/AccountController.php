@@ -51,7 +51,7 @@ class AccountController extends Controller
     // show the login form
     public function login()
     {
-        return view('front.account.showLogin');
+        return view('front.account.login');
     }
 
     public function authenticate(Request $request)
