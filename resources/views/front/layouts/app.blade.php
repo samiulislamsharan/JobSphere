@@ -35,7 +35,8 @@
                             <a class="nav-link" aria-current="page" href="jobs.html">Find Jobs</a>
                         </li>
                     </ul>
-                    <a class="btn btn-outline-primary me-2" href="{{ route('account.login') }}" type="submit">Login</a>
+                    <a class="btn btn-outline-primary me-2" href="{{ route('account.showLogin') }}"
+                        type="submit">Login</a>
                     <a class="btn btn-primary" href="post-job.html" type="submit">Post a Job</a>
                 </div>
             </div>

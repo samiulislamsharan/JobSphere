@@ -18,10 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
-Route::get('/account/register', [AccountController::class, 'registration'])->name('account.registration');
+Route::get('/account/register', [AccountController::class, 'registration'])->name('account.showRegistration');
 Route::post('/account/registerUser', [AccountController::class, 'registerUser'])->name('account.registerUser');
 
-Route::get('/account/login', [AccountController::class, 'login'])->name('account.login');
+Route::get('/account/login', [AccountController::class, 'login'])->name('account.showLogin');
 
 Route::post('/account/auth', [AccountController::class, 'authenticate'])->name('account.auth');
 

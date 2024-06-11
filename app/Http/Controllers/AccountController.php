@@ -13,7 +13,7 @@ class AccountController extends Controller
     // show the registration form
     public function registration()
     {
-        return view('front.account.registration');
+        return view('front.account.showRegistration');
     }
 
     // register the user
@@ -51,7 +51,7 @@ class AccountController extends Controller
     // show the login form
     public function login()
     {
-        return view('front.account.login');
+        return view('front.account.showLogin');
     }
 
     public function authenticate(Request $request)
@@ -68,12 +68,12 @@ class AccountController extends Controller
                 return redirect()->route('account.profile');
             } else {
                 return redirect()
-                    ->route('account.login')
+                    ->route('account.showLogin')
                     ->with('error', 'Invalid email or password!');
             }
         } else {
             return redirect()
-                ->route('account.login')
+                ->route('account.showLogin')
                 ->withErrors($validator)
                 ->withInput($request->only('email'));
         }
