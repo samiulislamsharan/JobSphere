@@ -8,7 +8,7 @@
                 <div class="col-md-5">
                     <div class="card shadow border-0 p-5">
                         <h1 class="h3">Register</h1>
-                        <form action="" name="registrationForm" id="registrationForm" autocomplete="on">
+                        <form action="" name="registration-form" id="registration-form" autocomplete="on">
                             <div class="mb-3">
                                 <label for="name" class="mb-2">Name*</label>
                                 <input type="text" name="name" id="name" class="form-control"
@@ -48,13 +48,13 @@
 @section('customJS')
     <script>
         // jQuery script to register form using AJAX
-        $("#registrationForm").submit(function(e) {
+        $("#registration-form").submit(function(e) {
             e.preventDefault();
 
             $.ajax({
                 url: "{{ route('account.registerUser') }}",
                 type: "POST",
-                data: $("#registrationForm").serializeArray(),
+                data: $("#registration-form").serializeArray(),
                 dataType: "JSON",
                 success: function(response) {
                     if (response.status === false) {
