@@ -17,14 +17,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
+    // guest routes
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('/login', [AccountController::class, 'login'])->name('showLogin');
+        Route::post('/auth', [AccountController::class, 'authenticate'])->name('auth');
+        Route::get('/register', [AccountController::class, 'registration'])->name('showRegistration');
+        Route::post('/registerUser', [AccountController::class, 'registerUser'])->name('registerUser');
+    });
 
-Route::get('/account/register', [AccountController::class, 'registration'])->name('account.showRegistration');
-Route::post('/account/registerUser', [AccountController::class, 'registerUser'])->name('account.registerUser');
-
-Route::get('/account/login', [AccountController::class, 'login'])->name('account.showLogin');
-
-Route::post('/account/auth', [AccountController::class, 'authenticate'])->name('account.auth');
-
-Route::get('/account/profile', [AccountController::class, 'profile'])->name('account.profile');
-
-Route::get('/account/logout', [AccountController::class, 'logout'])->name('account.logout');
+    // authenticated routes
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+        Route::get('/logout', [AccountController::class, 'logout'])->name('logout');
+    });
+});
