@@ -46,18 +46,18 @@
 @endsection
 
 @section('customJS')
-    <script>
+    <script type="text/javascript">
         // jQuery script to register form using AJAX
         $("#registration-form").submit(function(e) {
             e.preventDefault();
 
             $.ajax({
-                url: "{{ route('account.registerUser') }}",
                 type: "POST",
+                url: "{{ route('account.registerUser') }}",
                 data: $("#registration-form").serializeArray(),
                 dataType: "JSON",
                 success: function(response) {
-                    if (response.status === false) {
+                    if (response.status == false) {
                         var errors = response.errors;
 
                         if (errors.name) {
