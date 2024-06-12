@@ -19,29 +19,36 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="card border-0 shadow mb-4">
-                        <div class="card-body  p-4">
-                            <h3 class="fs-4 mb-1">My Profile</h3>
-                            <div class="mb-4">
-                                <label for="name" class="mb-2">Name*</label>
-                                <input type="text" id="name" placeholder="Enter Name" class="form-control"
-                                    value="">
+                        <form action="" method="POST" id="user-form" name="user-form">
+                            <div class="card-body p-4">
+                                <h3 class="fs-4 mb-1">My Profile</h3>
+                                <div class="mb-4">
+                                    <label for="name" class="mb-2">Name*</label>
+                                    <input type="text" name="name" id="name" placeholder="Enter Name"
+                                        class="form-control" value="{{ $user->name }}">
+                                    <p></p>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="mb-2">Email*</label>
+                                    <input type="email" name="email" id="email" placeholder="Enter Email"
+                                        class="form-control" value="{{ $user->email }}">
+                                    <p></p>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="designation" class="mb-2">Designation</label>
+                                    <input type="text" name="designation" id="designation" placeholder="Designation"
+                                        class="form-control" value="{{ $user->designation }}">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="mobile" class="mb-2">Mobile</label>
+                                    <input type="number" name="mobile" id="mobile" placeholder="Mobile"
+                                        class="form-control" value="{{ $user->mobile }}">
+                                </div>
                             </div>
-                            <div class="mb-4">
-                                <label for="email" class="mb-2">Email*</label>
-                                <input type="email" id="email" placeholder="Enter Email" class="form-control">
+                            <div class="card-footer p-4">
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
-                            <div class="mb-4">
-                                <label for="designation" class="mb-2">Designation*</label>
-                                <input type="text" id="designation" placeholder="Designation" class="form-control">
-                            </div>
-                            <div class="mb-4">
-                                <label for="mobile" class="mb-2">Mobile*</label>
-                                <input type="number" id="mobile" placeholder="Mobile" class="form-control">
-                            </div>
-                        </div>
-                        <div class="card-footer  p-4">
-                            <button type="button" class="btn btn-primary">Update</button>
-                        </div>
+                        </form>
                     </div>
 
                     <div class="card border-0 shadow mb-4">
@@ -62,7 +69,7 @@
                             </div>
                         </div>
                         <div class="card-footer  p-4">
-                            <button type="button" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>
                 </div>
