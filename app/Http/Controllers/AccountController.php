@@ -13,7 +13,7 @@ class AccountController extends Controller
     // show the registration form
     public function registration()
     {
-        return view('front.account.showRegistration');
+        return view('front.account.registration');
     }
 
     // register the user
