@@ -14,8 +14,14 @@
                     <a class="nav-link" aria-current="page" href="jobs.html">Find Jobs</a>
                 </li>
             </ul>
-            <a class="btn btn-outline-primary me-2" href="{{ route('account.showLogin') }}" type="submit">Login</a>
-            <a class="btn btn-primary" href="post-job.html" type="submit">Post a Job</a>
+            @auth
+                <a class="btn btn-primary me-2" href="{{ route('account.profile.show') }}" type="submit">Account</a>
+                <a class="btn btn-outline-primary" href="#" type="submit">Post a Job</a>
+            @endauth
+
+            @guest
+                <a class="btn btn-outline-primary me-2" href="{{ route('account.login.index') }}" type="submit">Login</a>
+            @endguest
         </div>
     </div>
 </nav>
