@@ -30,6 +30,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/profile', [AccountController::class, 'profile'])->name('profile.show');
         Route::put('/update-profile', [AccountController::class, 'updateProfile'])->name('profile.update');
+        Route::post('/update-profile-picture', [AccountController::class, 'updateProfilePicture'])->name('profilePicture.update');
         Route::get('/logout', [AccountController::class, 'logout'])->name('logout');
     });
 });
