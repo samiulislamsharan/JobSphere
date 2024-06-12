@@ -90,6 +90,44 @@ class AccountController extends Controller
             compact('user')
         );
     }
+
+    public function updateProfile(Request $request)
+    {
+        $id = Auth::user()->id;
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:5|max:25',
+            // check the email unique rule with the user id to ignore the current user email
+            // if the email is not changed then it will ignore the current user email
+            // otherwise, it will check the email unique rule with the other users
+            'email' => 'required|email|unique:users,email,' . $id . ',id',
+        ]);
+
+        if ($validator->passes()) {
+            // find the user by id
+            $user = User::find($id);
+
+            // update the user data
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->designation = $request->designation;
+            $user->mobile = $request->mobile;
+
+            // save the user data
+            $user->save();
+
+            session()->flash('success', 'User profile updated successfully!');
+
+            return response()->json([
+                'status' => true,
+                'errors' => [],
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors(),
+            ]);
+        }
     }
 
     public function logout()
