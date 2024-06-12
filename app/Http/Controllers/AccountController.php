@@ -81,7 +81,15 @@ class AccountController extends Controller
 
     public function profile()
     {
-        return view('front.account.profile');
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+
+        return view(
+            'front.account.profile',
+            compact('user')
+        );
+    }
     }
 
     public function logout()
