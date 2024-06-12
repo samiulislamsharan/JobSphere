@@ -65,15 +65,15 @@ class AccountController extends Controller
         // if the form data is valid then attempt to login the user
         if ($validator->passes()) {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-                return redirect()->route('account.profile');
+                return redirect()->route('account.profile.show');
             } else {
                 return redirect()
-                    ->route('account.showLogin')
+                    ->route('account.login.index')
                     ->with('error', 'Invalid email or password!');
             }
         } else {
             return redirect()
-                ->route('account.showLogin')
+                ->route('account.login.index')
                 ->withErrors($validator)
                 ->withInput($request->only('email'));
         }
@@ -88,6 +88,6 @@ class AccountController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('account.showLogin');
+        return redirect()->route('account.login.index');
     }
 }
