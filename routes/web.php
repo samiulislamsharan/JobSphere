@@ -20,15 +20,15 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
     // guest routes
     Route::group(['middleware' => 'guest'], function () {
-        Route::get('/login', [AccountController::class, 'login'])->name('showLogin');
+        Route::get('/login', [AccountController::class, 'login'])->name('login.index');
         Route::post('/auth', [AccountController::class, 'authenticate'])->name('auth');
-        Route::get('/register', [AccountController::class, 'registration'])->name('showRegistration');
+        Route::get('/register', [AccountController::class, 'registration'])->name('registration.index');
         Route::post('/registerUser', [AccountController::class, 'registerUser'])->name('registerUser');
     });
 
     // authenticated routes
     Route::group(['middleware' => 'auth'], function () {
-        Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+        Route::get('/profile', [AccountController::class, 'profile'])->name('profile.show');
         Route::get('/logout', [AccountController::class, 'logout'])->name('logout');
     });
 });
