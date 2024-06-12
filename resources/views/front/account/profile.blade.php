@@ -77,3 +77,64 @@
         </div>
     </section>
 @endsection
+
+@section('customJS')
+    <script type="text/javascript">
+        $("#user-form").submit(function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "PUT",
+                url: "{{ route('account.profile.update') }}",
+                dataType: "JSON",
+                data: $("#user-form").serializeArray(),
+                success: function(response) {
+                    if (response.status == true) {
+                        $("#name").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        $("#email").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        window.location.href = "{{ route('account.profile.show') }}";
+
+                    } else {
+                        var errors = response.errors;
+
+                        if (errors.name) {
+                            $("#name")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.name);
+                        } else {
+                            $("#name")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+
+                        if (errors.email) {
+                            $("#email")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.email);
+                        } else {
+                            $("#email")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+@endsection
