@@ -18,6 +18,7 @@
                     @include('front.account.shared.sidebar')
                 </div>
                 <div class="col-lg-9">
+                    @include('front.account.shared.message')
                     <div class="card border-0 shadow mb-4">
                         <form action="" method="POST" id="user-form" name="user-form">
                             <div class="card-body p-4">
