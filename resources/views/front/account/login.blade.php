@@ -4,18 +4,7 @@
     <section class="section-5">
         <div class="container my-5">
             <div class="py-lg-2">&nbsp;</div>
-            @if (Session::has('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ Session::get('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-            @if (Session::has('error'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ Session::get('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
+            @include('front.account.shared.message')
             <div class="row d-flex justify-content-center">
                 <div class="col-md-5">
                     <div class="card shadow border-0 p-5">
