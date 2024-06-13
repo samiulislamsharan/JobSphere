@@ -39,6 +39,31 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
+        $("#profile-pic-form").submit(function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('account.profilePicture.update') }}",
+                data: formData,
+                dataType: "JSON",
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if (response.status == false) {
+                        var errors = response.errors;
+                        if (errors.image) {
+                            $("#image-error").html(errors.image)
+                        }
+                    } else {
+                        window.location.href = '{{ url()->current() }}';
+                    }
+                }
+            });
+        });
     </script>
 
     @yield('customJS')
