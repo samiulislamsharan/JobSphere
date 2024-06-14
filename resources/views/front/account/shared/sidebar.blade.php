@@ -1,7 +1,12 @@
     <div class="card border-0 shadow mb-4 p-3">
         <div class="s-body text-center mt-3">
-            <img src="{{ asset('assets/images/avatar7.png') }}" alt="avatar" class="rounded-circle img-fluid"
-                style="width: 150px;">
+            @if (Auth::user()->image != '')
+                <img src="{{ asset('profile_picture/thumbnail/' . Auth::user()->image) }}" alt="avatar"
+                    class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
+            @else
+                <img src="{{ asset('assets/images/avatar.png') }}" alt="avatar" class="rounded-circle img-fluid"
+                    style="width: 150px;">
+            @endif
             <h5 class="mt-3 pb-0">{{ Auth::user()->name }}</h5>
             <p class="text-muted mb-1 fs-6">{{ Auth::user()->designation ?? 'Add Designation' }} </p>
             <div class="d-flex justify-content-center mb-2">
