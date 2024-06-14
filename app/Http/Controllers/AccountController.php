@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class AccountController extends Controller
 {
@@ -143,6 +146,21 @@ class AccountController extends Controller
             $extension = $image->getClientOriginalExtension();
             $imageFileName = $id . '-' . time() . '.' . $extension;
             $image->move(public_path('/profile_picture'), $imageFileName);
+
+            // create thumbnail image
+            $sourcePath = public_path('/profile_picture/' . $imageFileName);
+
+            // create new image instance
+            $manager = new ImageManager(Driver::class);
+            $image = $manager->read($sourcePath);
+
+            // crop the best fitting 1:1 (200, 200) ratio and resize to 200, 200 pixel
+            $image->cover(200, 200);
+            $image->toPng()->save(public_path('/profile_picture/thumbnail/' . $imageFileName));
+
+            // delete old image and thumbnail
+            File::delete(public_path('/profile_picture/' . Auth::user()->image));
+            File::delete(public_path('/profile_picture/thumbnail' . Auth::user()->image));
 
             User::where('id', $id)->update([
                 'image' => $imageFileName,
