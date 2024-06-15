@@ -15,16 +15,13 @@ use Intervention\Image\Drivers\Gd\Driver;
 
 class AccountController extends Controller
 {
-    // show the registration form
     public function registration()
     {
         return view('front.account.registration');
     }
 
-    // register the user
     public function registerUser(Request $request)
     {
-        // validate the form data
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -53,7 +50,6 @@ class AccountController extends Controller
         }
     }
 
-    // show the login form
     public function login()
     {
         return view('front.account.login');
@@ -61,7 +57,6 @@ class AccountController extends Controller
 
     public function authenticate(Request $request)
     {
-        // validate the form data
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',
@@ -118,7 +113,6 @@ class AccountController extends Controller
             $user->designation = $request->designation;
             $user->mobile = $request->mobile;
 
-            // save the user data
             $user->save();
 
             session()->flash('success', 'User profile updated successfully!');
@@ -149,7 +143,6 @@ class AccountController extends Controller
             $imageFileName = $id . '-' . time() . '.' . $extension;
             $image->move(public_path('/profile_picture'), $imageFileName);
 
-            // create thumbnail image
             $sourcePath = public_path('/profile_picture/' . $imageFileName);
 
             // create new image instance
