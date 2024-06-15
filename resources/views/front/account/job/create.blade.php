@@ -46,8 +46,8 @@
 
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
-                                        <label for="job_type" class="mb-2">Job Nature<span class="req">*</span></label>
-                                        <select class="form-select form-control" id="job_type">
+                                        <label for="job_type" class="mb-2">Job Type<span class="req">*</span></label>
+                                        <select class="form-select form-control" name="job_type" id="job_type">
                                             <option value="">Select a Job Type</option>
                                             @if ($jobTypes->isNotEmpty())
                                                 @foreach ($jobTypes as $jobType)
@@ -75,7 +75,7 @@
 
                                     <div class="mb-4 col-md-6">
                                         <label for="location" class="mb-2">Location<span class="req">*</span></label>
-                                        <input type="text" placeholder="location" id="location" name="Location"
+                                        <input type="text" placeholder="Location" id="location" name="location"
                                             class="form-control">
                                         <p></p>
                                     </div>
@@ -107,7 +107,7 @@
 
                                 <div class="mb-4">
                                     <label for="" class="mb-2">Experience<span class="req">*</span></label>
-                                    <select class="form-select" id="experience" class="form-control">
+                                    <select class="form-select form-control" name="experience" id="experience">
                                         <option value="1">1 Year</option>
                                         <option value="2">2 Years</option>
                                         <option value="3">3 Years</option>
@@ -123,7 +123,7 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="keywords" class="mb-2">Keywords<span class="req">*</span></label>
+                                    <label for="keywords" class="mb-2">Keywords</label>
                                     <input type="text" placeholder="keywords" id="keywords" name="keywords"
                                         class="form-control">
                                     <p></p>
@@ -141,17 +141,17 @@
                                     </div>
 
                                     <div class="mb-4 col-md-6">
-                                        <label for="location" class="mb-2">Location</label>
-                                        <input type="text" placeholder="Location" id="location" name="location"
-                                            class="form-control">
+                                        <label for="company_location" class="mb-2">Location</label>
+                                        <input type="text" placeholder="Location" id="company_location"
+                                            name="company_location" class="form-control">
                                         <p></p>
                                     </div>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="website" class="mb-2">Website</label>
-                                    <input type="text" placeholder="Website" id="website" name="website"
-                                        class="form-control">
+                                    <label for="company_website" class="mb-2">Website</label>
+                                    <input type="text" placeholder="Website" id="company_website"
+                                        name="company_website" class="form-control">
                                     <p></p>
                                 </div>
                             </div>
@@ -216,7 +216,7 @@
                             .removeClass('invalid-feedback')
                             .html('')
 
-                        // window.location.href = "{{ route('account.profile.show') }}";
+                        window.location.href = "{{ route('account.job.my') }}";
 
                     } else {
                         var errors = response.errors;
