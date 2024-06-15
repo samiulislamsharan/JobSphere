@@ -19,8 +19,8 @@ class JobTypeFactory extends Factory
         return [
             'name' => $this->faker->randomElement(
                 [
-                    'Full Time',
-                    'Part Time',
+                    'Full-Time',
+                    'Part-Time',
                     'Remote',
                     'Freelance'
                 ]
