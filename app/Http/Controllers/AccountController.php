@@ -196,3 +196,26 @@ class AccountController extends Controller
         );
     }
 
+    public function saveJob(Request $request)
+    {
+        $rules = [
+            'title' => 'required|min:5|max:200',
+            'category' => 'required',
+            'job_type' => 'required',
+            'vacancy' => 'required|integer',
+            'location' => 'required',
+            'description' => 'required',
+            'company_name' => 'required|min:5|max:100',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+        } else {
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors(),
+            ]);
+        }
+    }
+}
