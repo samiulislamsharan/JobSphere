@@ -165,3 +165,162 @@
         </div>
     </section>
 @endsection
+
+@section('customJS')
+    <script type="text/javascript">
+        $("#create-job-form").submit(function(e) {
+            e.preventDefault();
+
+            console.log($("#create-job-form").serializeArray());
+            // return false;
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('account.job.store') }}",
+                dataType: "JSON",
+                data: $("#create-job-form").serializeArray(),
+                success: function(response) {
+                    if (response.status == true) {
+                        $("#title").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        $("#category").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        $("#job_type").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        $("#vacancy").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        $("#location").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        $("#description").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        $("#company_name").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        // window.location.href = "{{ route('account.profile.show') }}";
+
+                    } else {
+                        var errors = response.errors;
+
+                        if (errors.title) {
+                            $("#title")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.title);
+                        } else {
+                            $("#title")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+
+                        if (errors.category) {
+                            $("#category")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.category);
+                        } else {
+                            $("#category")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+
+                        if (errors.job_type) {
+                            $("#job_type")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.job_type);
+                        } else {
+                            $("#job_type")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+
+                        if (errors.vacancy) {
+                            $("#vacancy")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.vacancy);
+                        } else {
+                            $("#vacancy")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+
+                        if (errors.location) {
+                            $("#location")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.location);
+                        } else {
+                            $("#location")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+
+                        if (errors.description) {
+                            $("#description")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.description);
+                        } else {
+                            $("#description")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+
+                        if (errors.company_name) {
+                            $("#company_name")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.company_name);
+                        } else {
+                            $("#company_name")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+@endsection
