@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\JobType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -186,4 +188,18 @@ class AccountController extends Controller
 
         return redirect()->route('account.login.index');
     }
-}
+
+    public function createJob()
+    {
+        $categories = Category::orderBy('name', 'ASC')->where('status', 1)->get();
+        $jobTypes = JobType::orderBy('name', 'ASC')->where('status', 1)->get();
+
+        return view(
+            'front.account.job.create',
+            compact(
+                'categories',
+                'jobTypes'
+            )
+        );
+    }
+
