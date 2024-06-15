@@ -171,7 +171,7 @@
         $("#create-job-form").submit(function(e) {
             e.preventDefault();
 
-            console.log($("#create-job-form").serializeArray());
+            // console.log($("#create-job-form").serializeArray());
             // return false;
 
             $.ajax({
