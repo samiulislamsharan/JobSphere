@@ -16,7 +16,7 @@
             </ul>
             @auth
                 <a class="btn btn-primary me-2" href="{{ route('account.profile.show') }}" type="submit">Account</a>
-                <a class="btn btn-outline-primary" href="#" type="submit">Post a Job</a>
+                <a class="btn btn-outline-primary" href="{{ route('account.job.create') }}" type="submit">Post a Job</a>
             @endauth
 
             @guest
