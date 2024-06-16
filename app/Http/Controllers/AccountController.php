@@ -256,4 +256,28 @@ class AccountController extends Controller
             compact('jobs')
         );
     }
+
+    public function editJob(Request $request, $id)
+    {
+        $categories = Category::orderBy('name', 'ASC')->where('status', 1)->get();
+        $jobTypes = JobType::orderBy('name', 'ASC')->where('status', 1)->get();
+
+        $job = Job::where([
+            'user_id' => Auth::user()->id,
+            'id' => $id,
+        ])->first();
+
+        if ($job == NULL) {
+            abort(404);
+        }
+
+        return view(
+            'front.account.job.edit',
+            compact(
+                'job',
+                'jobTypes',
+                'categories',
+            )
+        );
+    }
 }
