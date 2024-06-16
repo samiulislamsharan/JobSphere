@@ -62,9 +62,10 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <div class="action-dots float-end">
-                                                            <button href="#" class="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false">
+                                                        <div
+                                                            class="action-dots d-flex justify-content-center align-items-center">
+                                                            <button href="#" class="button btn btn-secondary"
+                                                                data-bs-toggle="dropdown" aria-expanded="false">
                                                                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                             </button>
                                                             <ul class="dropdown-menu dropdown-menu-end">
