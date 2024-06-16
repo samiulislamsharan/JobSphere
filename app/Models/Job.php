@@ -26,4 +26,14 @@ class Job extends Model
         'company_location',
         'company_website',
     ];
+
+    public function jobType()
+    {
+        return $this->belongsTo(JobType::class);
+    }
+
+    public function jobCategory()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
