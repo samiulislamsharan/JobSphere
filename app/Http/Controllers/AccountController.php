@@ -217,6 +217,7 @@ class AccountController extends Controller
             $job->title = $request->title;
             $job->category_id = $request->category;
             $job->job_type_id = $request->job_type;
+            $job->user_id = Auth::user()->id;
             $job->vacancy = $request->vacancy;
             $job->salary = $request->salary;
             $job->location = $request->location;
