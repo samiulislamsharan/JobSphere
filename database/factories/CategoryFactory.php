@@ -22,7 +22,7 @@ class CategoryFactory extends Factory
                     'Engineering',
                     'Accountant',
                     'Information Technology',
-                    'Fashion designing'
+                    'Fashion Designing'
                 ]
             ),
         ];
