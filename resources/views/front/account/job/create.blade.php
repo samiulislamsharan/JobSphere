@@ -171,8 +171,7 @@
         $("#create-job-form").submit(function(e) {
             e.preventDefault();
 
-            // console.log($("#create-job-form").serializeArray());
-            // return false;
+            $("button[type=submit]").prop('disabled', true);
 
             $.ajax({
                 type: "POST",
@@ -181,6 +180,8 @@
                 data: $("#create-job-form").serializeArray(),
                 success: function(response) {
                     if (response.status == true) {
+                        $("button[type=submit]").prop('disabled', false);
+
                         $("#title").removeClass('is-invalid')
                             .siblings('p')
                             .removeClass('invalid-feedback')
