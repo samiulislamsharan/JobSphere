@@ -330,4 +330,30 @@ class AccountController extends Controller
             ]);
         }
     }
+
+    public function deleteJob(Request $request)
+    {
+        $job = Job::where([
+            'user_id' => Auth::user()->id,
+            'id' => $request->id,
+        ])->first();
+
+        if ($job == NULL) {
+            session()->flash('error', 'Either job was deleted or you are not authorized to delete this job!');
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Either job was deleted or you are not authorized to delete this job!',
+            ]);
+        }
+
+        Job::where('id', $request->id)->delete();
+
+        session()->flash('success', 'Job deleted successfully!');
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Job deleted successfully!',
+        ]);
+    }
 }
