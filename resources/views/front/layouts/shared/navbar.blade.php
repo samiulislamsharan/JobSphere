@@ -11,7 +11,7 @@
                     <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="jobs.html">Find Jobs</a>
+                    <a class="nav-link" aria-current="page" href="{{ route('jobs') }}">Find Jobs</a>
                 </li>
             </ul>
             @auth
