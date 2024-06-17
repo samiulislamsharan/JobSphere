@@ -83,9 +83,10 @@
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#">
+                                                                    <a class="dropdown-item" href="#"
+                                                                        onclick="deleteJob({{ $job->id }})">
                                                                         <i class="fa fa-trash" aria-hidden="true"></i>
-                                                                        Remove
+                                                                        Delete
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -110,27 +111,22 @@
 
 @section('customJS')
     <script type="text/javascript">
-        $("#").submit(function(e) {
-            e.preventDefault();
+        function deleteJob(id) {
+            if (confirm('Are you sure you want to delete this job?')) {
+                $.ajax({
+                    url: "{{ route('account.job.delete') }}",
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {
+                        id: id,
+                    },
+                    success: function(response) {
 
-            // console.log($("#").serializeArray());
-            // return false;
+                        window.location.href = "{{ route('account.job.my') }}";
 
-            $.ajax({
-                type: "POST",
-                url: "{{ route('account.job.store') }}",
-                dataType: "JSON",
-                data: $("#").serializeArray(),
-                success: function(response) {
-                    if (response.status == true) {
-
-                        // window.location.href = "{{ route('account.profile.show') }}";
-
-                    } else {
-                        var errors = response.errors;
                     }
-                }
-            });
-        });
+                });
+            }
+        }
     </script>
 @endsection
