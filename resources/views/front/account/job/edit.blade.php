@@ -78,7 +78,7 @@
 
                                     <div class="mb-4 col-md-6">
                                         <label for="location" class="mb-2">Location<span class="req">*</span></label>
-                                        <input value="{{ $job->location }} type="text" placeholder="Location"
+                                        <input value="{{ $job->location }}" type="text" placeholder="Location"
                                             id="location" name="location" class="form-control">
                                         <p></p>
                                     </div>
