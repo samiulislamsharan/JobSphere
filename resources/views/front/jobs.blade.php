@@ -38,40 +38,29 @@
 
                         <div class="mb-4">
                             <h2>Category</h2>
-                            <select name="category" id="category" class="form-select form-control">
+                            <select class="form-select form-control" name="category" id="category">
                                 <option value="">Select a Category</option>
-                                <option value="">Engineering</option>
-                                <option value="">Accountant</option>
-                                <option value="">Information Technology</option>
-                                <option value="">Fashion designing</option>
+                                @if ($categories->isNotEmpty())
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
 
                         <div class="mb-4">
                             <h2>Job Type</h2>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input " name="job_type" type="checkbox" value="1"
-                                    id="">
-                                <label class="form-check-label " for="">Full Time</label>
-                            </div>
-
-                            <div class="form-check mb-2">
-                                <input class="form-check-input school-section" name="job_type" type="checkbox"
-                                    value="1" id="">
-                                <label class="form-check-label " for="">Part Time</label>
-                            </div>
-
-                            <div class="form-check mb-2">
-                                <input class="form-check-input school-section" name="job_type" type="checkbox"
-                                    value="1" id="">
-                                <label class="form-check-label " for="">Freelance</label>
-                            </div>
-
-                            <div class="form-check mb-2">
-                                <input class="form-check-input school-section" name="job_type" type="checkbox"
-                                    value="1" id="">
-                                <label class="form-check-label " for="">Remote</label>
-                            </div>
+                            @if ($categories->isNotEmpty())
+                                @foreach ($jobTypes as $jobType)
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" name="job_type" type="checkbox"
+                                            value="{{ $jobType->id }}" id="job-type-{{ $jobType->id }}">
+                                        <label class="form-check-label" for="job-type-{{ $jobType->id }}">
+                                            {{ $jobType->name }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
 
                         <div class="mb-4">
@@ -97,34 +86,43 @@
                     <div class="job_listing_area">
                         <div class="job_lists">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="card border-0 p-3 shadow mb-4">
-                                        <div class="card-body">
-                                            <h3 class="border-0 fs-5 pb-2 mb-0">Laravel Developer</h3>
-                                            <p>We are in need of a Laravel Developer for our company.</p>
-                                            <div class="bg-light p-3 border">
-                                                <p class="mb-0">
-                                                    <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                    <span class="ps-1">Gazipur Sadar</span>
-                                                </p>
-                                                <p class="mb-0">
-                                                    <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                    <span class="ps-1">On-Site</span>
-                                                </p>
-                                                <p class="mb-0">
-                                                    <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                    <span class="ps-1">100k</span>
-                                                </p>
-                                            </div>
+                                @if ($jobs->isNotEmpty())
+                                    @foreach ($jobs as $job)
+                                        <div class="col-md-4">
+                                            <div class="card border-0 p-3 shadow mb-4">
+                                                <div class="card-body">
+                                                    <h3 class="border-0 fs-5 pb-2 mb-0">{{ $job->title }}</h3>
+                                                    <p>{{ Str::words($job->description, $words = 15) }}</p>
+                                                    <div class="bg-light p-3 border">
+                                                        <p class="mb-0">
+                                                            <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
+                                                            <span class="ps-1">{{ $job->location }}</span>
+                                                        </p>
+                                                        <p class="mb-0">
+                                                            <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
+                                                            <span class="ps-1">{{ $job->jobType->name }}</span>
+                                                        </p>
+                                                        @if (!is_null($job->salary))
+                                                            <p class="mb-0">
+                                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
+                                                                <span class="ps-1">{{ $job->salary }}</span>
+                                                            </p>
+                                                        @endif
+                                                    </div>
 
-                                            <div class="d-grid mt-3">
-                                                <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
+                                                    <div class="d-grid mt-3">
+                                                        <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        {{ $jobs->links() }}
                     </div>
                 </div>
             </div>
