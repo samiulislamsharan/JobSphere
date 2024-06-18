@@ -3,6 +3,7 @@
 /* Fonts */
 /* Bootstrap Styles */
 :root {
+    --theme-primary: #a8df8e;
     --bs-white: #fff;
     --bs-gray: #6c757d;
     --bs-secondary: #6c757d;
@@ -9753,13 +9754,13 @@ h6 span {
     font-size: inherit;
     font-family: inherit;
     display: inline-block;
-    color: #a8df8e;
+    color: var(--theme-primary);
 }
 h1 {
     font-size: 66px;
 }
 h1 span {
-    color: #a8df8e;
+    color: var(--theme-primary);
 }
 h2 {
     font-size: 30px;
@@ -9769,7 +9770,7 @@ h2 {
 h2:after {
     content: "";
     position: absolute;
-    background-color: #a8df8e;
+    background-color: var(--theme-primary);
     width: 70px;
     height: 4px;
     bottom: 0px;
@@ -9808,7 +9809,7 @@ q span {
     font-size: inherit;
 }
 a {
-    color: #a8df8e;
+    color: var(--theme-primary);
 }
 a:hover {
     color: #000;
@@ -9844,8 +9845,8 @@ button,
 button.btn-primary,
 .btn.btn-primary {
     color: #ffffff;
-    background: #a8df8e;
-    border: 2px solid #a8df8e;
+    background: var(--theme-primary);
+    border: 2px solid var(--theme-primary);
 }
 button.btn-primary:hover,
 button.btn-primary:focus,
@@ -9864,14 +9865,14 @@ button.btn-secondary:hover,
 button.btn-secondary:focus,
 .btn.btn-secondary:hover,
 .btn.btn-secondary:focus {
-    border: 2px solid #a8df8e;
-    background: #a8df8e;
+    border: 2px solid var(--theme-primary);
+    background: var(--theme-primary);
     color: #ffffff;
 }
 button.btn-outline-primary,
 .btn.btn-outline-primary {
-    color: #a8df8e;
-    border: 2px solid #a8df8e;
+    color: var(--theme-primary);
+    border: 2px solid var(--theme-primary);
 }
 button.btn-outline-primary:hover,
 button.btn-outline-primary:focus,
@@ -10239,7 +10240,7 @@ label .req {
     font-size: 1em;
 }
 footer .nav-link {
-    color: #a8df8e;
+    color: var(--theme-primary);
 }
 .section-5 .card .thead,
 .section-5 .card tbody,
@@ -10270,7 +10271,7 @@ footer .nav-link {
     padding: 10px 40px 10px 15px;
 }
 .section-5 .card .dropdown-menu .dropdown-item:hover {
-    background: #a8df8e;
+    background: var(--theme-primary);
     color: #ffffff;
 }
 .section-5 .card .dropdown-menu .dropdown-item:hover i {
@@ -10290,7 +10291,7 @@ footer .nav-link {
     color: #000;
 }
 .section-5 .account-nav ul li a:hover {
-    color: #a8df8e;
+    color: var(--theme-primary);
 }
 @font-face {
     font-family: "fontello";
