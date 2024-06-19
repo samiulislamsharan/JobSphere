@@ -138,3 +138,23 @@
         </div>
     </section>
 @endsection
+
+@section('customJS')
+    <script type="text/javascript">
+        function applyJob(id) {
+            if (confirm('Are you sure you want to apply for this job?')) {
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('job.apply') }}",
+                    data: {
+                        id: id
+                    },
+                    dataType: "JSON",
+                    success: function(response) {
+                        window.location.href = "{{ route('job.detail', $job->id) }}";
+                    }
+                });
+            }
+        }
+    </script>
+@endsection
