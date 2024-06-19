@@ -17,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/jobs', [JobsController::class, 'index'])->name('jobs');
-Route::get('/jobs/detail/{id}', [JobsController::class, 'detail'])->name('job.detail');
+
+Route::group(['prefix' => 'jobs'], function () {
+    Route::get('/', [JobsController::class, 'index'])->name('jobs');
+    Route::get('/detail/{id}', [JobsController::class, 'detail'])->name('job.detail');
+});
 
 Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
     // guest routes
