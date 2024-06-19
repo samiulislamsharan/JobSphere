@@ -60,22 +60,33 @@
                                 <h4>Job description</h4>
                                 <p>{!! nl2br($job->description) !!}</p>
                             </div>
-                            <div class="single_wrap">
-                                <h4>Responsibility</h4>
-                                <p>{!! nl2br($job->responsibility) !!}</p>
-                            </div>
-                            <div class="single_wrap">
-                                <h4>Qualifications</h4>
-                                <p>{!! nl2br($job->qualifications) !!}</p>
-                            </div>
-                            <div class="single_wrap">
-                                <h4>Benefits</h4>
-                                <p>{!! nl2br($job->benefits) !!}</p>
-                            </div>
+                            @if (!empty($job->responsibility))
+                                <div class="single_wrap">
+                                    <h4>Responsibility</h4>
+                                    <p>{!! nl2br($job->responsibility) !!}</p>
+                                </div>
+                            @endif
+                            @if (!empty($job->qualifications))
+                                <div class="single_wrap">
+                                    <h4>Qualifications</h4>
+                                    <p>{!! nl2br($job->qualifications) !!}</p>
+                                </div>
+                            @endif
+                            @if (!empty($job->benefits))
+                                <div class="single_wrap">
+                                    <h4>Benefits</h4>
+                                    <p>{!! nl2br($job->benefits) !!}</p>
+                                </div>
+                            @endif
                             <div class="border-bottom"></div>
                             <div class="pt-3 text-end">
                                 <a href="#" class="btn btn-secondary">Save</a>
-                                <a href="#" class="btn btn-primary">Apply</a>
+                                @if (Auth::check())
+                                    <a href="#" onclick="applyJob({{ $job->id }})"
+                                        class="btn btn-primary">Apply</a>
+                                @else
+                                    <a href="javascript:void(0);" class="btn btn-primary">Login to Apply</a>
+                                @endif
                             </div>
                         </div>
                     </div>
