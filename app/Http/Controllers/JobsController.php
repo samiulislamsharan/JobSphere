@@ -68,4 +68,24 @@ class JobsController extends Controller
             )
         );
     }
+
+    public function detail($id)
+    {
+        $job = Job::where(
+            [
+                'id' => $id,
+                'status' => 1
+            ]
+        )->with(
+            [
+                'jobType', 'jobCategory'
+            ]
+        )->first();
+
+        if (!$job) {
+            return redirect()->route('jobs');
+        }
+
+        return view('front.job-detail', compact('job'));
+    }
 }
