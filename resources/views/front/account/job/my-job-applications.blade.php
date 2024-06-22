@@ -45,7 +45,7 @@
                                                     </td>
                                                     <td>{{ \Carbon\Carbon::parse($jobApplication->job->created_at)->format('d M, Y') }}
                                                     </td>
-                                                    <td>0 Applications
+                                                    <td>{{ $jobApplication->job->applications->count() }} Applications
                                                     </td>
                                                     <td>
                                                         @if ($jobApplication->job->status == 1)
@@ -79,6 +79,10 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="5" class="text-center">No job applications found.</td>
+                                            </tr>
                                         @endif
                                     </tbody>
                                 </table>
