@@ -400,7 +400,8 @@ class AccountController extends Controller
                 [
                     'job',
                     'job.jobType',
-                    'job.jobCategory'
+                    'job.jobCategory',
+                    'job.applications',
                 ]
             )
             ->paginate(10);
