@@ -362,7 +362,22 @@ class AccountController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Job deleted successfully!',
-        ]);
+
+    public function myJobApplications()
+    {
+        $jobApplications = JobApplication::where(
+            'user_id',
+            Auth::user()->id
+        )
+            ->with(
+                [
+                    'job',
+                    'job.jobType',
+                    'job.jobCategory'
+                ]
+            )
+            ->paginate(10);
+
+        return view('front.account.job.my-job-applications', compact('jobApplications'));
     }
 }
