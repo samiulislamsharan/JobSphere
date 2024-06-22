@@ -339,17 +339,26 @@ class AccountController extends Controller
         ])->first();
 
         if ($job == NULL) {
-            session()->flash('error', 'Either job was deleted or you are not authorized to delete this job!');
+            $message = 'Either job was deleted or you are not authorized to delete this job!';
+
+            session()->flash('error', $message);
 
             return response()->json([
                 'status' => false,
-                'message' => 'Either job was deleted or you are not authorized to delete this job!',
+                'message' => $message,
             ]);
         }
 
         Job::where('id', $request->id)->delete();
 
-        session()->flash('success', 'Job deleted successfully!');
+        $message = 'Job deleted successfully!';
+        session()->flash('success', $message);
+
+        return response()->json([
+            'status' => true,
+            'message' => $message,
+        ]);
+    }
 
         return response()->json([
             'status' => true,
