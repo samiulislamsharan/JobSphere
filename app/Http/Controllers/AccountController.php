@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Job;
+use App\Models\JobApplication;
 use App\Models\JobType;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -360,8 +361,34 @@ class AccountController extends Controller
         ]);
     }
 
+    public function removeJob(Request $request)
+    {
+        $jobApplication = JobApplication::where([
+            'id' => $request->id,
+            'user_id' => Auth::user()->id,
+        ])->first();
+
+        if ($jobApplication == NULL) {
+            $message = 'Either job application was removed or you are not authorized to remove this job!';
+
+            session()->flash('error', $message);
+
+            return response()->json([
+                'status' => false,
+                'message' => $message,
+            ]);
+        }
+
+        JobApplication::where('id', $request->id)->delete();
+
+        $message = 'Job application removed successfully!';
+        session()->flash('success', $message);
+
         return response()->json([
             'status' => true,
+            'message' => $message,
+        ]);
+    }
 
     public function myJobApplications()
     {
