@@ -18,6 +18,7 @@
                     @include('front.account.shared.sidebar')
                 </div>
                 <div class="col-lg-9">
+                    @include('front.account.shared.message')
                     <div class="card border-0 shadow mb-4 p-3">
                         <div class="card-body card-form">
                             <h3 class="fs-4 mb-1">Saved Jobs</h3>
