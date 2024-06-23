@@ -171,7 +171,7 @@
                 },
                 dataType: "JSON",
                 success: function(response) {
-                    window.location.href = "{{ url()->current() }}";
+                    window.location.href = "{{ route('job.detail', $job->id) }}";
                 }
             });
         }
