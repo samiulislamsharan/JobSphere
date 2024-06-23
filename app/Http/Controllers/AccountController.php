@@ -411,6 +411,18 @@ class AccountController extends Controller
 
     public function savedJobs()
     {
-        return view('front.account.job.saved-jobs');
+        $savedJobs = SavedJob::where(
+            ['user_id' => Auth::user()->id]
+        )->with(
+            [
+                'job',
+                'job.jobType',
+                'job.jobCategory',
+            ]
+        )
+            ->orderBy('created_at', 'DESC')
+            ->paginate(10);
+
+        return view('front.account.job.saved-jobs', compact('savedJobs'));
     }
 }
