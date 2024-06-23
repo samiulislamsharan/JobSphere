@@ -22,6 +22,7 @@ Route::group(['prefix' => 'jobs'], function () {
     Route::get('/', [JobsController::class, 'index'])->name('jobs');
     Route::get('/detail/{id}', [JobsController::class, 'detail'])->name('job.detail');
     Route::post('/apply-job', [JobsController::class, 'applyJob'])->name('job.apply')->middleware('auth');
+    Route::post('/save-job', [JobsController::class, 'saveJob'])->name('job.save')->middleware('auth');
 });
 
 Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
