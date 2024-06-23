@@ -8,7 +8,7 @@
                     <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Account Settings</li>
+                            <li class="breadcrumb-item active">My Jobs</li>
                         </ol>
                     </nav>
                 </div>
@@ -70,7 +70,8 @@
                                                             </button>
                                                             <ul class="dropdown-menu dropdown-menu-end">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="job-detail.html">
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ route('job.detail', $job->id) }}">
                                                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                                                         View
                                                                     </a>
