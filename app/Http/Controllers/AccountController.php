@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\JobType;
+use App\Models\SavedJob;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -382,6 +383,35 @@ class AccountController extends Controller
         JobApplication::where('id', $request->id)->delete();
 
         $message = 'Job application removed successfully!';
+        session()->flash('success', $message);
+
+        return response()->json([
+            'status' => true,
+            'message' => $message,
+        ]);
+    }
+
+    public function removeSavedJob(Request $request)
+    {
+        $savedJob = SavedJob::where([
+            'id' => $request->id,
+            'user_id' => Auth::user()->id,
+        ])->first();
+
+        if ($savedJob == NULL) {
+            $message = 'Either job application was removed or you are not authorized to remove this job!';
+
+            session()->flash('error', $message);
+
+            return response()->json([
+                'status' => false,
+                'message' => $message,
+            ]);
+        }
+
+        SavedJob::where('id', $request->id)->delete();
+
+        $message = 'Saved job removed successfully!';
         session()->flash('success', $message);
 
         return response()->json([
