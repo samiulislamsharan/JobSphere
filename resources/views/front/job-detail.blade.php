@@ -97,6 +97,59 @@
                             </div>
                         </div>
                     </div>
+                    @if (Auth::user())
+                        @if (Auth::user()->id == $job->user_id)
+                            {{-- applicants section --}}
+                            <div class="card shadow border-0 mt-4">
+                                <div class="job_details_header">
+                                    <div class="single_jobs white-bg d-flex justify-content-between">
+                                        <div class="jobs_left d-flex align-items-center">
+                                            <div class="jobs_conetent">
+                                                <h4>Applicants</h4>
+                                            </div>
+                                        </div>
+                                        <div class="jobs_right">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="descript_wrap white-bg">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead class="bg-light">
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Applied Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="border-0">
+                                                @if ($applications->isNotEmpty())
+                                                    @foreach ($applications as $application)
+                                                        <tr class="active">
+                                                            <td>
+                                                                <div class="job-name fw-500">{{ $application->user->name }}
+                                                                </div>
+                                                            </td>
+                                                            <td><a
+                                                                    href="mailto:{{ $application->user->email }}">{{ $application->user->email }}</a>
+                                                            </td>
+                                                            <td>{{ \Carbon\Carbon::parse($application->applied_date)->format('d M, Y') }}
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td colspan="3" class="text-center">No applicants found</td>
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
                 </div>
                 <div class="col-md-4">
                     <div class="card shadow border-0">
