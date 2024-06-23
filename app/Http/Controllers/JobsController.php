@@ -98,13 +98,19 @@ class JobsController extends Controller
             )->count();
         }
 
+        $applications = JobApplication::where('job_id', $id)->with('user')->get();
+
         if (!$job) {
             return redirect()->route('jobs');
         }
 
         return view(
             'front.job-detail',
-            compact('job', 'savedJobCount')
+            compact(
+                'job',
+                'applications',
+                'savedJobCount',
+            )
         );
     }
 
