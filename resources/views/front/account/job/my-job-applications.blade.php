@@ -68,7 +68,8 @@
                                                                         View
                                                                     </a>
                                                                 </li>
-                                                                <li><a class="dropdown-item" href="#"
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#"
                                                                         onclick="removeJob({{ $jobApplication->id }})">
                                                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                                                         Remove
