@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\JobType;
+use App\Models\SavedJob;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -164,6 +165,55 @@ class JobsController extends Controller
         Mail::to($employer->email)->send(new JobNotificationEmail($mailData));
 
         $message = 'Successfully applied to the job!';
+
+        session()->flash('success', $message);
+
+        return response()->json([
+            'status' => true,
+            'message' => $message
+        ]);
+    }
+
+    public function saveJob(Request $request)
+    {
+        $id = $request->id;
+        $job = Job::find($id);
+
+        if ($job == NULL) {
+            $message = 'Job does not exist';
+
+            session()->flash('error', $message);
+
+            return response()->json([
+                'status' => false,
+                'message' => $message
+            ]);
+        }
+
+        $savedJobCount = SavedJob::where(
+            [
+                'user_id' => Auth::user()->id,
+                'job_id' => $id,
+            ]
+        )->count();
+
+        if ($savedJobCount > 0) {
+            $message = 'You have already saved this job';
+
+            session()->flash('error', $message);
+
+            return response()->json([
+                'status' => false,
+                'message' => $message
+            ]);
+        }
+
+        $savedJob = new SavedJob();
+        $savedJob->job_id = $id;
+        $savedJob->user_id = Auth::user()->id;
+        $savedJob->save();
+
+        $message = 'Job saved successfully';
 
         session()->flash('success', $message);
 
