@@ -40,8 +40,10 @@
                                 </div>
                                 <div class="jobs_right">
                                     <div class="apply_now">
-                                        <a class="heart_mark" href="#">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                        <a class="heart_mark" href="javascript:void(0)"
+                                            onclick="saveJob({{ $job->id }})">
+                                            <i class="{{ $savedJobCount == 1 ? 'fa-solid fa-heart' : 'fa-regular fa-heart' }}"
+                                                aria-hidden="true"></i>
                                         </a>
                                         @auth()
                                             @if (auth()->user()->id == $job->user_id)
