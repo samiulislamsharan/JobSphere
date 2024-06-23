@@ -408,4 +408,9 @@ class AccountController extends Controller
 
         return view('front.account.job.my-job-applications', compact('jobApplications'));
     }
+
+    public function savedJobs()
+    {
+        return view('front.account.job.saved-jobs');
+    }
 }
