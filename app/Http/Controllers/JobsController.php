@@ -88,11 +88,24 @@ class JobsController extends Controller
             ]
         )->first();
 
+        $savedJobCount = 0;
+        if (Auth::user()) {
+            $savedJobCount = SavedJob::where(
+                [
+                    'user_id' => Auth::user()->id,
+                    'job_id' => $id,
+                ]
+            )->count();
+        }
+
         if (!$job) {
             return redirect()->route('jobs');
         }
 
-        return view('front.job-detail', compact('job'));
+        return view(
+            'front.job-detail',
+            compact('job', 'savedJobCount')
+        );
     }
 
     public function applyJob(Request $request)
