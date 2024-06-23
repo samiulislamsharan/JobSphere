@@ -404,6 +404,7 @@ class AccountController extends Controller
                     'job.applications',
                 ]
             )
+            ->orderBy('created_at', 'DESC')
             ->paginate(10);
 
         return view('front.account.job.my-job-applications', compact('jobApplications'));
