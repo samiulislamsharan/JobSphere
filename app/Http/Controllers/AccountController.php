@@ -456,4 +456,41 @@ class AccountController extends Controller
 
         return view('front.account.job.saved-jobs', compact('savedJobs'));
     }
+
+    public function updatePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'old_password' => 'required',
+            'new_password' => 'required|min:8|same:confirm_password',
+            'confirm_password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors(),
+            ]);
+        }
+
+        if (Hash::check($request->old_password, Auth::user()->password) == false) {
+            return response()->json([
+                'status' => false,
+                'errors' => [
+                    'old_password' => ['Old password does not match!'],
+                ],
+            ]);
+        }
+
+        $user = User::find(Auth::user()->id);
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        $message = 'Password updated successfully!';
+        session()->flash('success', $message);
+
+        return response()->json([
+            'status' => true,
+            'message' => $message,
+        ]);
+    }
 }
