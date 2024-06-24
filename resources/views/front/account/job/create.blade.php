@@ -83,24 +83,25 @@
 
                                 <div class="mb-4">
                                     <label for="description" class="mb-2">Description<span class="req">*</span></label>
-                                    <textarea class="form-control" name="description" id="description" cols="5" rows="5"
+                                    <textarea class="form-control text-editor" name="description" id="description" cols="5" rows="5"
                                         placeholder="Description"></textarea>
                                     <p></p>
                                 </div>
                                 <div class="mb-4">
                                     <label for="benefits" class="mb-2">Benefits</label>
-                                    <textarea class="form-control" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits"></textarea>
+                                    <textarea class="form-control text-editor" name="benefits" id="benefits" cols="5" rows="5"
+                                        placeholder="Benefits"></textarea>
                                     <p></p>
                                 </div>
                                 <div class="mb-4">
                                     <label for="responsibility" class="mb-2">Responsibility</label>
-                                    <textarea class="form-control" name="responsibility" id="responsibility" cols="5" rows="5"
+                                    <textarea class="form-control text-editor" name="responsibility" id="responsibility" cols="5" rows="5"
                                         placeholder="Responsibility"></textarea>
                                     <p></p>
                                 </div>
                                 <div class="mb-4">
                                     <label for="qualifications" class="mb-2">Qualifications</label>
-                                    <textarea class="form-control" name="qualifications" id="qualifications" cols="5" rows="5"
+                                    <textarea class="form-control text-editor" name="qualifications" id="qualifications" cols="5" rows="5"
                                         placeholder="Qualifications"></textarea>
                                     <p></p>
                                 </div>
