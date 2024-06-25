@@ -26,24 +26,24 @@
                                 <div class="mb-4">
                                     <label for="name" class="mb-2">Name*</label>
                                     <input type="text" name="name" id="name" placeholder="Enter Name"
-                                        class="form-control" value="{{ $user->name }}">
+                                        class="form-control" value="{{ Auth::user()->name }}">
                                     <p></p>
                                 </div>
                                 <div class="mb-4">
                                     <label for="email" class="mb-2">Email*</label>
                                     <input type="email" name="email" id="email" placeholder="Enter Email"
-                                        class="form-control" value="{{ $user->email }}">
+                                        class="form-control" value="{{ Auth::user()->email }}">
                                     <p></p>
                                 </div>
                                 <div class="mb-4">
                                     <label for="designation" class="mb-2">Designation</label>
                                     <input type="text" name="designation" id="designation" placeholder="Designation"
-                                        class="form-control" value="{{ $user->designation }}">
+                                        class="form-control" value="{{ Auth::user()->designation }}">
                                 </div>
                                 <div class="mb-4">
                                     <label for="mobile" class="mb-2">Mobile</label>
                                     <input type="number" name="mobile" id="mobile" placeholder="Mobile"
-                                        class="form-control" value="{{ $user->mobile }}">
+                                        class="form-control" value="{{ Auth::user()->mobile }}">
                                 </div>
                             </div>
                             <div class="card-footer p-4">
