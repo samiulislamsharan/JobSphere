@@ -82,22 +82,18 @@
                             @endif
                             <div class="border-bottom"></div>
                             <div class="pt-3 text-end">
-                                @if (Auth::check())
-                                    <a href="#" onclick="saveJob({{ $job->id }})"
-                                        class="btn btn-secondary">Save</a>
-                                @else
+                                @auth
+                                    <a href="#" onclick="saveJob({{ $job->id }})" class="btn btn-secondary">Save</a>
+                                    <a href="#" onclick="applyJob({{ $job->id }})" class="btn btn-primary">Apply</a>
+                                @endauth
+                                @guest
                                     <a href="javascript:void(0);" class="btn btn-primary">Login to Save</a>
-                                @endif
-                                @if (Auth::check())
-                                    <a href="#" onclick="applyJob({{ $job->id }})"
-                                        class="btn btn-primary">Apply</a>
-                                @else
                                     <a href="javascript:void(0);" class="btn btn-primary">Login to Apply</a>
-                                @endif
+                                @endguest
                             </div>
                         </div>
                     </div>
-                    @if (Auth::user())
+                    @auth
                         @if (Auth::user()->id == $job->user_id)
                             {{-- applicants section --}}
                             <div class="card shadow border-0 mt-4">
@@ -149,7 +145,7 @@
                                 </div>
                             </div>
                         @endif
-                    @endif
+                    @endauth
                 </div>
                 <div class="col-md-4">
                     <div class="card shadow border-0">
