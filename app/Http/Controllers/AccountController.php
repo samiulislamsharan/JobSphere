@@ -262,9 +262,7 @@ class AccountController extends Controller
             'id' => $id,
         ])->first();
 
-        if ($job == NULL) {
-            abort(404);
-        }
+        abort_if($job == NULL, 404);
 
         return view(
             'front.account.job.edit',
