@@ -34,7 +34,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
         Route::get('/login', [AccountController::class, 'login'])->name('login.index');
         Route::post('/auth', [AccountController::class, 'authenticate'])->name('auth');
         Route::get('/register', [AccountController::class, 'registration'])->name('registration.index');
-        Route::post('/registerUser', [AccountController::class, 'registerUser'])->name('registerUser');
+        Route::post('/register-user', [AccountController::class, 'registerUser'])->name('user.register');
     });
 
     // authenticated routes
