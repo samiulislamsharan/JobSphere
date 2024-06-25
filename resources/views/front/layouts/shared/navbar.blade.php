@@ -15,6 +15,9 @@
                 </li>
             </ul>
             @auth
+                @if (Auth::user()->role == 'admin')
+                    <a class="btn btn-primary me-2" href="{{ route('admin.dashboard') }}" type="submit">Admin</a>
+                @endif
                 <a class="btn btn-primary me-2" href="{{ route('account.profile.show') }}" type="submit">Account</a>
                 <a class="btn btn-outline-primary" href="{{ route('account.job.create') }}" type="submit">Post a Job</a>
             @endauth
