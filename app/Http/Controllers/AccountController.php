@@ -84,14 +84,7 @@ class AccountController extends Controller
 
     public function profile()
     {
-        $id = Auth::user()->id;
-
-        $user = User::find($id);
-
-        return view(
-            'front.account.profile',
-            compact('user')
-        );
+        return view('front.account.profile');
     }
 
     public function updateProfile(Request $request)
