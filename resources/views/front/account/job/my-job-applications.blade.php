@@ -33,58 +33,56 @@
                                         </tr>
                                     </thead>
                                     <tbody class="border-0">
-                                        @if ($jobApplications->isNotEmpty())
-                                            @foreach ($jobApplications as $jobApplication)
-                                                <tr class="active">
-                                                    <td>
-                                                        <div class="job-name fw-500">{{ $jobApplication->job->title }}</div>
-                                                        <div class="info1">
-                                                            {{ $jobApplication->job->jobType->name }}
-                                                            . {{ $jobApplication->job->location }}
-                                                        </div>
-                                                    </td>
-                                                    <td>{{ \Carbon\Carbon::parse($jobApplication->job->created_at)->format('d M, Y') }}
-                                                    </td>
-                                                    <td>{{ $jobApplication->job->applications->count() }} Applications
-                                                    </td>
-                                                    <td>
-                                                        @if ($jobApplication->job->status == 1)
-                                                            <div class="job-status text-capitalize">Active</div>
-                                                        @else
-                                                            <div class="job-status text-capitalize">Inactive</div>
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        <div class="action-dots float-end">
-                                                            <a href="#" class="" data-bs-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                                <li>
-                                                                    <a class="dropdown-item" target="_blank"
-                                                                        href="{{ route('job.detail', $jobApplication->job->id) }}">
-                                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                        View
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#"
-                                                                        onclick="removeJob({{ $jobApplication->id }})">
-                                                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                                                        Remove
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @else
+                                        @forelse ($jobApplications as $jobApplication)
+                                            <tr class="active">
+                                                <td>
+                                                    <div class="job-name fw-500">{{ $jobApplication->job->title }}</div>
+                                                    <div class="info1">
+                                                        {{ $jobApplication->job->jobType->name }}
+                                                        . {{ $jobApplication->job->location }}
+                                                    </div>
+                                                </td>
+                                                <td>{{ \Carbon\Carbon::parse($jobApplication->job->created_at)->format('d M, Y') }}
+                                                </td>
+                                                <td>{{ $jobApplication->job->applications->count() }} Applications
+                                                </td>
+                                                <td>
+                                                    @if ($jobApplication->job->status == 1)
+                                                        <div class="job-status text-capitalize">Active</div>
+                                                    @else
+                                                        <div class="job-status text-capitalize">Inactive</div>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <div class="action-dots float-end">
+                                                        <a href="#" class="" data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu dropdown-menu-end">
+                                                            <li>
+                                                                <a class="dropdown-item" target="_blank"
+                                                                    href="{{ route('job.detail', $jobApplication->job->id) }}">
+                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                    View
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="#"
+                                                                    onclick="removeJob({{ $jobApplication->id }})">
+                                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                    Remove
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @empty
                                             <tr>
                                                 <td colspan="5" class="text-center">No job applications found.</td>
                                             </tr>
-                                        @endif
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>

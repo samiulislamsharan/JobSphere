@@ -33,53 +33,55 @@
                                         </tr>
                                     </thead>
                                     <tbody class="border-0">
-                                        @if ($savedJobs->isNotEmpty())
-                                            @foreach ($savedJobs as $savedJob)
-                                                <tr class="active">
-                                                    <td>
-                                                        <div class="job-name fw-500">{{ $savedJob->job->title }}</div>
-                                                        <div class="info1">
-                                                            {{ $savedJob->job->jobType->name }} .
-                                                            {{ $savedJob->job->location }}
-                                                        </div>
-                                                    </td>
-                                                    </td>
-                                                    <td>{{ $savedJob->job->applications->count() }} Applications
-                                                    <td>
-                                                        @if ($savedJob->job->status == 1)
-                                                            <div class="job-status text-capitalize">Active</div>
-                                                        @else
-                                                            <div class="job-status text-capitalize">Inactive</div>
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        <div
-                                                            class="action-dots d-flex justify-content-center align-items-center">
-                                                            <button href="#" class="button btn btn-secondary"
-                                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                                <li>
-                                                                    <a class="dropdown-item"
-                                                                        href="{{ route('job.detail', $savedJob->job->id) }}">
-                                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                        View
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#"
-                                                                        onclick="removeSavedJob({{ $savedJob->id }})">
-                                                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                                                        Remove
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
+                                        @forelse ($savedJobs as $savedJob)
+                                            <tr class="active">
+                                                <td>
+                                                    <div class="job-name fw-500">{{ $savedJob->job->title }}</div>
+                                                    <div class="info1">
+                                                        {{ $savedJob->job->jobType->name }} .
+                                                        {{ $savedJob->job->location }}
+                                                    </div>
+                                                </td>
+                                                </td>
+                                                <td>{{ $savedJob->job->applications->count() }} Applications
+                                                <td>
+                                                    @if ($savedJob->job->status == 1)
+                                                        <div class="job-status text-capitalize">Active</div>
+                                                    @else
+                                                        <div class="job-status text-capitalize">Inactive</div>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <div
+                                                        class="action-dots d-flex justify-content-center align-items-center">
+                                                        <button href="#" class="button btn btn-secondary"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-end">
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('job.detail', $savedJob->job->id) }}">
+                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                    View
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="#"
+                                                                    onclick="removeSavedJob({{ $savedJob->id }})">
+                                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                    Remove
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="4" class="text-center">No saved jobs found</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
