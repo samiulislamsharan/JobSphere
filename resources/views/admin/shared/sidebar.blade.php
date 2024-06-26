@@ -2,7 +2,10 @@
     <div class="card-body p-0">
         <ul class="list-group list-group-flush ">
             <li class="list-group-item d-flex justify-content-between p-3">
-                <a href="{{ route('account.profile.show') }}">Users</a>
+                <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between p-3">
+                <a href="{{ route('admin.users.show') }}">Users</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{ route('account.job.my') }}">Jobs</a>
