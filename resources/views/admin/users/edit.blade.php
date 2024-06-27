@@ -80,7 +80,7 @@
                             .removeClass('invalid-feedback')
                             .html('')
 
-                        window.location.href = "{{ route('admin.users.show') }}";
+                        window.location.href = "{{ route('admin.users.index') }}";
 
                     } else {
                         var errors = response.errors;
