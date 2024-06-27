@@ -24,21 +24,21 @@
 
                         <div class="row align-items-center mt-4">
                             <div class="col">
-                                <div class="card border-0 shadow">
+                                <div class="card border-0 shadow mt-2">
                                     <div class="card-body">
                                         <h4 class="pb-0">{{ $usersCount }} Users</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card border-0 shadow">
+                                <div class="card border-0 shadow mt-2">
                                     <div class="card-body">
                                         <h4 class="pb-0">{{ $jobsCount }} Jobs</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card border-0 shadow">
+                                <div class="card border-0 shadow mt-2">
                                     <div class="card-body">
                                         <h4 class="pb-0">{{ $applicantCount }} Applicants</h4>
                                     </div>
@@ -48,14 +48,14 @@
 
                         <div class="row align-items-center mt-4">
                             <div class="col">
-                                <div class="card border-0 shadow">
+                                <div class="card border-0 shadow mt-2">
                                     <div class="card-body">
                                         <h4 class="pb-0">{{ $categoryCount }} Categories</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card border-0 shadow">
+                                <div class="card border-0 shadow mt-2">
                                     <div class="card-body">
                                         <h4 class="pb-0">{{ $jobTypeCount }} Job Types</h4>
                                     </div>
