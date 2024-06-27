@@ -77,8 +77,8 @@
             e.preventDefault();
 
             $.ajax({
-                type: "PUT",
-                url: "",
+                type: "POST",
+                url: "{{ route('admin.users.store') }}",
                 dataType: "JSON",
                 data: $("#user-create-form").serializeArray(),
                 success: function(response) {
@@ -89,6 +89,16 @@
                             .html('')
 
                         $("#email").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        $("#password").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        $("#confirm_password").removeClass('is-invalid')
                             .siblings('p')
                             .removeClass('invalid-feedback')
                             .html('')
@@ -120,6 +130,34 @@
                                 .html(errors.email);
                         } else {
                             $("#email")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+
+                        if (errors.password) {
+                            $("#password")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.password);
+                        } else {
+                            $("#password")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+
+                        if (errors.confirm_password) {
+                            $("#confirm_password")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.confirm_password);
+                        } else {
+                            $("#confirm_password")
                                 .removeClass('is-invalid')
                                 .siblings('p')
                                 .removeClass('invalid-feedback')
