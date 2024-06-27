@@ -21,6 +21,14 @@
                     @include('front.account.shared.message')
                     <div class="card border-0 shadow mb-4 p-3">
                         <div class="card-body card-form">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h3 class="fs-4 mb-1">All Users</h3>
+                                </div>
+                                <div style="margin-top: -10px;">
+                                    <a href="#" class="btn btn-primary">Add new User</a>
+                                </div>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class="bg-light">
