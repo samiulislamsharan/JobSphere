@@ -22,8 +22,38 @@ class UserController extends Controller
         return view('admin.users.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'designation' => 'nullable',
+            'mobile' => 'nullable',
+            'password' => 'required|min:8|same:confirm_password',
+            'confirm_password' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->designation = $request->designation;
+            $user->mobile = $request->mobile;
+            $user->password = bcrypt($request->password);
+            $user->save();
+
+            session()->flash('success', 'User created successfully!');
+
+            return response()->json([
+                'status' => true,
+                'message' => 'User created successfully!',
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors(),
+            ]);
+        }
     }
 
     public function edit($id)
