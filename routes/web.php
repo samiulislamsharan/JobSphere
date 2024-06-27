@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobsController;
@@ -29,6 +30,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
         Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('edit');
         Route::put('/users/{id}', [UserController::class, 'update'])->name('update');
         Route::delete('/user-delete', [UserController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::group(['as' => 'jobs.'], function () {
+        Route::get('/jobs', [JobController::class, 'index'])->name('index');
     });
 });
 
