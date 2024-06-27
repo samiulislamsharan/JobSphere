@@ -66,7 +66,8 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class="dropdown-item" href="#">
+                                                                <a class="dropdown-item" href="#"
+                                                                    onclick="deleteUser({{ $user->id }})">
                                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                                     Delete
                                                                 </a>
@@ -95,5 +96,21 @@
 @endsection
 
 @section('customJS')
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        function deleteUser(id) {
+            if (confirm('Are you sure you want to delete this user?')) {
+                $.ajax({
+                    type: "DELETE",
+                    url: "{{ route('admin.users.destroy') }}",
+                    data: {
+                        id: id
+                    },
+                    dataType: "JSON",
+                    success: function(response) {
+                        window.location.href = "{{ route('admin.users.show') }}";
+                    }
+                });
+            }
+        }
+    </script>
 @endsection
