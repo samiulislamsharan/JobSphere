@@ -46,6 +46,19 @@
                                     <input type="number" name="mobile" id="mobile" placeholder="Mobile"
                                         class="form-control">
                                 </div>
+                                <hr>
+                                <div class="mb-3">
+                                    <label for="password" class="mb-2">Password*</label>
+                                    <input type="password" name="password" id="password" class="form-control"
+                                        placeholder="Enter Password">
+                                    <p></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirm_password" class="mb-2">Confirm Password*</label>
+                                    <input type="password" name="confirm_password" id="confirm_password"
+                                        class="form-control" placeholder="Confirm Password">
+                                    <p></p>
+                                </div>
                             </div>
                             <div class="card-footer p-4">
                                 <button type="submit" class="btn btn-primary">Create</button>
