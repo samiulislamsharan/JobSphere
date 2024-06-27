@@ -59,13 +59,8 @@
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-end">
                                                             <li>
-                                                                <a class="dropdown-item" href="#">
-                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                    View
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item" href="#">
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('admin.users.edit', $user->id) }}">
                                                                     <i class="fa fa-edit" aria-hidden="true"></i>
                                                                     Edit
                                                                 </a>
