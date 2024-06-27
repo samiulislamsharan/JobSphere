@@ -22,7 +22,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/users-list', [UserController::class, 'index'])->name('users.show');
+
+    Route::group(['as' => 'users.'], function () {
+        Route::get('/users-list', [UserController::class, 'index'])->name('show');
+        Route::get('/user-edit/{id}', [UserController::class, 'edit'])->name('edit');
+        Route::put('/user-update/{id}', [UserController::class, 'update'])->name('update');
+        Route::delete('/user-delete', [UserController::class, 'destroy'])->name('destroy');
+    });
 });
 
 Route::group(['prefix' => 'jobs'], function () {
