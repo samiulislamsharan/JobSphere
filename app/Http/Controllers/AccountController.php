@@ -36,7 +36,7 @@ class AccountController extends Controller
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->password = Hash::make($request->password);
+            $user->password = bcrypt($request->password);
             $user->save();
 
             session()->flash('success', 'User registered successfully!');
@@ -473,7 +473,7 @@ class AccountController extends Controller
         }
 
         $user = User::find(Auth::user()->id);
-        $user->password = Hash::make($request->new_password);
+        $user->password = bcrypt($request->new_password);
         $user->save();
 
         $message = 'Password updated successfully!';
