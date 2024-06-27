@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 
     Route::group(['as' => 'users.'], function () {
         Route::get('/users', [UserController::class, 'index'])->name('index');
+        Route::post('/users', [UserController::class, 'store'])->name('store');
         Route::get('/users/create', [UserController::class, 'create'])->name('create');
         Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('edit');
         Route::put('/users/{id}', [UserController::class, 'update'])->name('update');
