@@ -21,8 +21,7 @@
                 <div class="col-lg-9">
                     @include('front.account.shared.message')
                     <div class="card border-0 shadow mb-4">
-                        <form action="" method="POST" id="user-edit-form" name="user-edit-form">
-                            @method('PUT')
+                        <form action="" method="POST" id="user-create-form" name="user-create-form">
                             <div class="card-body p-4">
                                 <h3 class="fs-4 mb-1">Create User</h3>
                                 <div class="mb-4">
@@ -61,14 +60,14 @@
 
 @section('customJS')
     <script type="text/javascript">
-        $("#user-edit-form").submit(function(e) {
+        $("#user-create-form").submit(function(e) {
             e.preventDefault();
 
             $.ajax({
                 type: "PUT",
                 url: "",
                 dataType: "JSON",
-                data: $("#user-edit-form").serializeArray(),
+                data: $("#user-create-form").serializeArray(),
                 success: function(response) {
                     if (response.status == true) {
                         $("#name").removeClass('is-invalid')
