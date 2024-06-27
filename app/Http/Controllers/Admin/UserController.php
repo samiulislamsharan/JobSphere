@@ -15,4 +15,11 @@ class UserController extends Controller
 
         return view('admin.users.show-list', compact('users'));
     }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('admin.users.edit', compact('user'));
+    }
 }
