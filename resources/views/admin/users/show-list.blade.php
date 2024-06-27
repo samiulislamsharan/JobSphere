@@ -26,7 +26,7 @@
                                     <h3 class="fs-4 mb-1">All Users</h3>
                                 </div>
                                 <div style="margin-top: -10px;">
-                                    <a href="#" class="btn btn-primary">Add new User</a>
+                                    <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Add new User</a>
                                 </div>
                             </div>
                             <div class="table-responsive">
