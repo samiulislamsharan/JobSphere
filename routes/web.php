@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* TODO:
+|convert the routes to resource routes
+*/
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
