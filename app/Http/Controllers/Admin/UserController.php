@@ -59,4 +59,29 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function destroy(Request $request)
+    {
+        $user = User::findOrFail($request->id);
+
+        if ($user == NULL) {
+            $message = 'User not found!';
+            session()->flash('error', $message);
+
+            return response()->json([
+                'status' => false,
+                'message' => $message,
+            ]);
+        }
+
+        $user->delete();
+
+        $message = 'User deleted successfully!';
+        session()->flash('success', $message);
+
+        return response()->json([
+            'status' => true,
+            'message' => $message,
+        ]);
+    }
 }
