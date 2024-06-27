@@ -107,7 +107,7 @@
                     },
                     dataType: "JSON",
                     success: function(response) {
-                        window.location.href = "{{ route('admin.users.show') }}";
+                        window.location.href = "{{ route('admin.users.index') }}";
                     }
                 });
             }
