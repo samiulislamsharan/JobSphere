@@ -23,6 +23,10 @@ class JobController extends Controller
         return view('admin.jobs.index', compact('jobs'));
     }
 
+    public function edit()
+    {
+    }
+
     public function destroy($id)
     {
         $job = Job::findOrFail($id);
