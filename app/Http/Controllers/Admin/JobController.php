@@ -22,5 +22,29 @@ class JobController extends Controller
 
         return view('admin.jobs.index', compact('jobs'));
     }
+
+    public function destroy($id)
+    {
+        $job = Job::findOrFail($id);
+
+        if ($job == NULL) {
+            $message = 'Job not found!';
+            session()->flash('error', $message);
+
+            return response()->json([
+                'status' => false,
+                'message' => $message,
+            ]);
+        }
+
+        $job->delete();
+
+        $message = 'Job deleted successfully!';
+        session()->flash('success', $message);
+
+        return response()->json([
+            'status' => true,
+            'message' => $message,
+        ]);
     }
 }
