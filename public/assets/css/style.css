@@ -3097,7 +3097,7 @@ fieldset:disabled .btn {
 .page-link {
     position: relative;
     display: block;
-    color: #0d6efd;
+    color: var(--theme-primary);
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #dee2e6;
@@ -3123,8 +3123,8 @@ fieldset:disabled .btn {
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+    background-color: var(--theme-primary);
+    border-color: var(--theme-primary);
 }
 .page-item.disabled .page-link {
     color: #6c757d;
@@ -10810,3 +10810,7 @@ footer .nav-link {
     content: "";
 }
 /* '' */
+
+.pagination span{
+    font-size: inherit;
+}
