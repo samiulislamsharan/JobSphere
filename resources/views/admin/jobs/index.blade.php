@@ -113,5 +113,21 @@
 @endsection
 
 @section('customJS')
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        function deleteJob(id) {
+            if (confirm('Are you sure you want to delete this job?')) {
+                $.ajax({
+                    url: "{{ route('admin.jobs.destroy', $job->id) }}",
+                    type: "DELETE",
+                    dataType: "JSON",
+                    data: {
+                        id: id,
+                    },
+                    success: function(response) {
+                        window.location.href = "{{ route('admin.jobs.index') }}";
+                    }
+                });
+            }
+        }
+    </script>
 @endsection
