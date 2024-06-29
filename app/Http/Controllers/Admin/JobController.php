@@ -10,7 +10,7 @@ class JobController extends Controller
 {
     public function index()
     {
-        $jobs = Job::where('status', 1)
+        $jobs = Job::orderBy('created_at', 'DESC')
             ->with(
                 [
                     'user',
@@ -18,7 +18,7 @@ class JobController extends Controller
                     'jobCategory',
                     'applications'
                 ]
-            )->orderBy('created_at', 'DESC')->paginate(10);
+            )->paginate(10);
 
         return view('admin.jobs.index', compact('jobs'));
     }
