@@ -24,7 +24,30 @@
                         @method('PUT')
                         <div class="card border-0 shadow mb-4">
                             <div class="card-body card-form p-4">
-                                <h3 class="fs-4 mb-1">Admin: Edit Job Details</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3 class="fs-4 mb-1">Admin: Edit Job Details</h3>
+                                    </div>
+                                    <div class="col-md-6 font-monospace">
+                                        <div class="form-check form-check-inline">
+                                            <input {{ $job->isFeatured == 1 ? 'checked' : '' }} class="form-check-input"
+                                                type="checkbox" value="1" id="isFeatured" name="isFeatured">
+                                            <label class="form-check-label" for="isFeatured">Featured</label>
+                                        </div>
+                                        <span class="fw-bold fs-6">Status: </span>
+                                        <div class="form-check form-check-inline">
+                                            <input {{ $job->status == 1 ? 'checked' : '' }} class="form-check-input"
+                                                type="radio" name="status" id="status-active" value="1">
+                                            <label class="form-check-label" for="status-active">Active</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input {{ $job->status == 0 ? 'checked' : '' }} class="form-check-input"
+                                                type="radio" name="status" id="status-inactive" value="0">
+                                            <label class="form-check-label" for="status-inactive">Inactive</label>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
                                         <label for="title" class="mb-2">Title<span class="req">*</span></label>
