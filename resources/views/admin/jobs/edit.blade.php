@@ -82,7 +82,8 @@
                                     </div>
 
                                     <div class="mb-4 col-md-6">
-                                        <label for="location" class="mb-2">Location<span class="req">*</span></label>
+                                        <label for="location" class="mb-2">Location<span
+                                                class="req">*</span></label>
                                         <input value="{{ $job->location }}" type="text" placeholder="Location"
                                             id="location" name="location" class="form-control">
                                         <p></p>
@@ -90,7 +91,8 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="description" class="mb-2">Description<span class="req">*</span></label>
+                                    <label for="description" class="mb-2">Description<span
+                                            class="req">*</span></label>
                                     <textarea class="form-control text-editor" name="description" id="description" cols="5" rows="5"
                                         placeholder="Description">{{ $job->description }}</textarea>
                                     <p></p>
@@ -138,7 +140,8 @@
                                         </option>
                                         <option value="10" {{ $job->experience == 10 ? 'selected' : '' }}> Years
                                         </option>
-                                        <option value="10_plus" {{ $job->experience == '10_plus' ? 'selected' : '' }}>10
+                                        <option value="10_plus" {{ $job->experience == '10_plus' ? 'selected' : '' }}>
+                                            10
                                             Years
                                         </option>
                                     </select>
