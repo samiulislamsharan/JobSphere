@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* TODO:
-|convert the routes to resource routes
+| convert the routes to resource routes
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::group(['as' => 'jobs.'], function () {
         Route::get('/jobs', [JobController::class, 'index'])->name('index');
         Route::get('/jobs/{id}/edit', [JobController::class, 'edit'])->name('edit');
+        Route::put('/jobs/{id}', [JobController::class, 'update'])->name('update');
         Route::delete('/jobs/{id}', [JobController::class, 'destroy'])->name('destroy');
     });
 });
