@@ -35,13 +35,13 @@
                                         <label for="category" class="mb-2">Category<span class="req">*</span></label>
                                         <select class="form-select form-control" name="category" id="category">
                                             <option value="">Select a Category</option>
-                                            @if ($categories->isNotEmpty())
-                                                @foreach ($categories as $category)
-                                                    <option {{ $job->category_id == $category->id ? 'selected' : '' }}
-                                                        value="{{ $category->id }}">
-                                                        {{ $category->name }}</option>
-                                                @endforeach
-                                            @endif
+                                            @forelse ($categories as $category)
+                                                <option {{ $job->category_id == $category->id ? 'selected' : '' }}
+                                                    value="{{ $category->id }}">
+                                                    {{ $category->name }}</option>
+                                            @empty
+                                                <option value="">No Category Found</option>
+                                            @endforelse
                                         </select>
                                         <p></p>
                                     </div>
@@ -52,12 +52,12 @@
                                         <label for="job_type" class="mb-2">Job Type<span class="req">*</span></label>
                                         <select class="form-select form-control" name="job_type" id="job_type">
                                             <option value="{{ $category->id }}">Select a Job Type</option>
-                                            @if ($jobTypes->isNotEmpty())
-                                                @foreach ($jobTypes as $jobType)
-                                                    <option {{ $job->job_type_id == $jobType->id ? 'selected' : '' }}
-                                                        value="{{ $jobType->id }}">{{ $jobType->name }}</option>
-                                                @endforeach
-                                            @endif
+                                            @forelse ($jobTypes as $jobType)
+                                                <option {{ $job->job_type_id == $jobType->id ? 'selected' : '' }}
+                                                    value="{{ $jobType->id }}">{{ $jobType->name }}</option>
+                                            @empty
+                                                <option value="">No Job Type Found</option>
+                                            @endforelse
                                         </select>
                                         <p></p>
                                     </div>
