@@ -88,6 +88,9 @@ class JobController extends Controller
             $job->company_location = $request->company_location;
             $job->company_website = $request->company_website;
 
+            $job->isFeatured = (!empty($request->isFeatured)) ? $request->isFeatured : 0;
+            $job->status = $request->status;
+
             $job->save();
 
             session()->flash('success', 'Job updated successfully!');
