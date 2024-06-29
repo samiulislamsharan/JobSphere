@@ -93,11 +93,12 @@ class JobController extends Controller
 
             $job->save();
 
-            session()->flash('success', 'Job updated successfully!');
+            $message = 'Job updated successfully!';
+            session()->flash('success', $message);
 
             return response()->json([
                 'status' => true,
-                'errors' => [],
+                'message' => $message,
             ]);
         } else {
             return response()->json([
