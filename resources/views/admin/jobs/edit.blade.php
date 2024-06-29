@@ -21,6 +21,7 @@
                 <div class="col-lg-9">
                     @include('front.account.shared.message')
                     <form action="" method="POST" id="update-job-form" name="update-job-form">
+                        @method('PUT')
                         <div class="card border-0 shadow mb-4">
                             <div class="card-body card-form p-4">
                                 <h3 class="fs-4 mb-1">Admin: Edit Job Details</h3>
@@ -198,8 +199,8 @@
             $("button[type=submit]").prop('disabled', true);
 
             $.ajax({
-                type: "POST",
-                url: "{{ route('account.job.update', $job->id) }}",
+                type: "PUT",
+                url: "{{ route('admin.jobs.update', $job->id) }}",
                 dataType: "JSON",
                 data: $("#update-job-form").serializeArray(),
                 success: function(response) {
@@ -241,7 +242,7 @@
                             .removeClass('invalid-feedback')
                             .html('')
 
-                        window.location.href = "{{ route('job.detail', $job->id) }}";
+                        window.location.href = "{{ route('admin.jobs.index') }}";
 
                     } else {
                         var errors = response.errors;
