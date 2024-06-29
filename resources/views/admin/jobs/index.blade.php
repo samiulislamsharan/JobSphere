@@ -34,7 +34,6 @@
                                             <th scope="col">Title</th>
                                             <th scope="col">Created by</th>
                                             <th scope="col">Job Created</th>
-                                            <th scope="col">Applicants</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -47,12 +46,11 @@
                                                 <td>
                                                     <div class="job-name fw-500">{{ $job->title }}</div>
                                                     <div class="info1">
-                                                        {{ $job->jobType->name }} . {{ $job->location }}
+                                                        Applicants: {{ $job->applications->count() }}
                                                     </div>
                                                 </td>
                                                 <td>{{ $job->user->name }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($job->created_at)->format('d M, Y') }}</td>
-                                                <td>{{ $job->applications->count() }} Applications</td>
                                                 <td>
                                                     @if ($job->status == 1)
                                                         <div class="job-status text-capitalize">Active</div>
@@ -77,7 +75,7 @@
                                                             </li>
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('account.job.edit', $job->id) }}">
+                                                                    href="{{ route('admin.jobs.edit', $job->id) }}">
                                                                     <i class="fa fa-edit" aria-hidden="true"></i>
                                                                     Edit
                                                                 </a>
