@@ -31,8 +31,12 @@
                                 </div>
                                 <div class="mb-4">
                                     <label for="email" class="mb-2">Email*</label>
-                                    <input type="email" name="email" id="email" placeholder="Enter Email"
-                                        class="form-control" value="{{ Auth::user()->email }}">
+                                    <div class="input-group">
+                                        <input type="email" name="email" id="email" placeholder="Enter Email"
+                                            class="form-control" value="{{ Auth::user()->email }}">
+                                        <button class="btn btn-outline-dark" type="button"
+                                            id="button-addon2">Verify</button>
+                                    </div>
                                     <p></p>
                                 </div>
                                 <div class="mb-4">
@@ -42,8 +46,12 @@
                                 </div>
                                 <div class="mb-4">
                                     <label for="mobile" class="mb-2">Mobile</label>
-                                    <input type="number" name="mobile" id="mobile" placeholder="Mobile"
-                                        class="form-control" value="{{ Auth::user()->mobile }}">
+                                    <div class="input-group">
+                                        <input type="number" name="mobile" id="mobile" placeholder="Mobile"
+                                            class="form-control" value="{{ Auth::user()->mobile }}">
+                                        <button class="btn btn-outline-dark" type="button"
+                                            id="button-addon2">Verify</button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer p-4">
