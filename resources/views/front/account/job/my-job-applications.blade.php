@@ -20,7 +20,7 @@
                 <div class="col-lg-9">
                     <div class="card border-0 shadow mb-4 p-3">
                         <div class="card-body card-form">
-                            <h3 class="fs-4 mb-1">Jobs Applied</h3>
+                            <h3 class="fs-4 mb-1">Jobs I Applied</h3>
                             <div class="table-responsive">
                                 <table class="table ">
                                     <thead class="bg-light">
