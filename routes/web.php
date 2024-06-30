@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\JobApplicationController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
@@ -37,11 +38,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
         Route::delete('/user-delete', [UserController::class, 'destroy'])->name('destroy');
     });
 
-    Route::group(['as' => 'jobs.'], function () {
-        Route::get('/jobs', [JobController::class, 'index'])->name('index');
-        Route::get('/jobs/{id}/edit', [JobController::class, 'edit'])->name('edit');
-        Route::put('/jobs/{id}', [JobController::class, 'update'])->name('update');
-        Route::delete('/jobs/{id}', [JobController::class, 'destroy'])->name('destroy');
+    Route::group(['prefix' => 'jobs', 'as' => 'jobs.'], function () {
+        Route::get('/', [JobController::class, 'index'])->name('index');
+        Route::get('/{id}/edit', [JobController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [JobController::class, 'update'])->name('update');
+        Route::delete('/{id}', [JobController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::group(['prefix' => 'job-applications', 'as' => 'job.applications.'], function () {
+        Route::get('/', [JobApplicationController::class, 'index'])->name('index');
     });
 });
 
