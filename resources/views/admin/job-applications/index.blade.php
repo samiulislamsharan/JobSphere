@@ -18,6 +18,7 @@
                     @include('admin.shared.sidebar')
                 </div>
                 <div class="col-lg-9">
+                    @include('front.account.shared.message')
                     <div class="card border-0 shadow mb-4 p-3">
                         <div class="card-body card-form">
                             <h3 class="fs-4 mb-1">All Job Applications</h3>
@@ -62,19 +63,19 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <div class="action-dots float-end">
-                                                        <a href="#" class="" data-bs-toggle="dropdown"
-                                                            aria-expanded="false">
+                                                    <div class="action-dots text-center">
+                                                        <button href="#" class="button btn btn-secondary"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
                                                             <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                                        </a>
+                                                        </button>
                                                         <ul class="dropdown-menu dropdown-menu-end">
-                                                            <li>
+                                                            {{-- <li>
                                                                 <a class="dropdown-item" target="_blank"
                                                                     href="{{ route('job.detail', $jobApplication->job->id) }}">
                                                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                                                     View
                                                                 </a>
-                                                            </li>
+                                                            </li> --}}
                                                             <li>
                                                                 <a class="dropdown-item" href="javascript:void(0);"
                                                                     onclick="deleteJobApplication({{ $jobApplication->id }})">
@@ -107,5 +108,20 @@
 
 @section('customJS')
     <script type="text/javascript">
+        function deleteJobApplication(id) {
+            if (confirm('Are you sure you want to delete this Job Application?')) {
+                $.ajax({
+                    url: "{{ route('admin.job.applications.destroy') }}",
+                    type: "DELETE",
+                    dataType: "JSON",
+                    data: {
+                        id: id,
+                    },
+                    success: function(response) {
+                        window.location.href = "{{ route('admin.job.applications.index') }}";
+                    }
+                });
+            }
+        }
     </script>
 @endsection
