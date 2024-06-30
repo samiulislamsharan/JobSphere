@@ -47,6 +47,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 
     Route::group(['prefix' => 'job-applications', 'as' => 'job.applications.'], function () {
         Route::get('/', [JobApplicationController::class, 'index'])->name('index');
+        Route::delete('/', [JobApplicationController::class, 'destroy'])->name('destroy');
     });
 });
 
