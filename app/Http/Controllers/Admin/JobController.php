@@ -108,9 +108,10 @@ class JobController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $job = Job::findOrFail($id);
+        $id = $request->id;
+        $job = Job::find($id);
 
         if ($job == NULL) {
             $message = 'Job not found!';
