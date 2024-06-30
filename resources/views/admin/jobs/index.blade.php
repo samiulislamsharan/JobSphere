@@ -34,7 +34,7 @@
                                             <th scope="col">Title</th>
                                             <th scope="col">Created by</th>
                                             <th scope="col">Job Created</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col" class="text-center">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -53,9 +53,11 @@
                                                 <td>{{ \Carbon\Carbon::parse($job->created_at)->format('d M, Y') }}</td>
                                                 <td>
                                                     @if ($job->status == 1)
-                                                        <div class="job-status text-capitalize">Active</div>
+                                                        <div class="job-status text-capitalize text-success text-center">
+                                                            Active</div>
                                                     @else
-                                                        <div class="job-status text-capitalize">Inactive</div>
+                                                        <div class="job-status text-capitalize text-danger text-center">
+                                                            Inactive</div>
                                                     @endif
                                                 </td>
                                                 <td>
