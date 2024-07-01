@@ -71,6 +71,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
         Route::get('/forgot-password', [AccountController::class, 'forgotPassword'])->name('forgot.password');
         Route::post('/process-forgot-password', [AccountController::class, 'processForgotPassword'])->name('process.forgot.password');
         Route::get('/reset-password/{token}', [AccountController::class, 'resetPassword'])->name('reset.password');
+        Route::post('/process-reset-password', [AccountController::class, 'processResetPassword'])->name('process.reset.password');
     });
 
     // authenticated routes
