@@ -545,3 +545,35 @@ class AccountController extends Controller
 
         return view('front.account.reset-password', compact('tokenString'));
     }
+
+    public function processResetPassword(Request $request)
+    {
+        $token = DB::table('password_reset_tokens')
+            ->where('token', $request->token)
+            ->first();
+
+        if ($token == NULL) {
+            return redirect()
+                ->route('account.forgot.password')
+                ->with('error', 'Invalid password reset token!');
+        }
+
+        $validator = Validator::make($request->all(), [
+            'new_password' => 'required|min:8',
+            'confirm_new_password' => 'required|same:new_password',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('account.reset.password', $request->token)
+                ->withErrors($validator);
+        }
+
+        User::where('email', $token->email)
+            ->update(['password' => bcrypt($request->new_password)]);
+
+        return redirect()
+            ->route('account.login.index')
+            ->with('success', 'Password changed successfully.');
+    }
+}
