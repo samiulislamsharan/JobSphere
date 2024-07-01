@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PasswordResetEmail;
 use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobApplication;
@@ -9,9 +10,12 @@ use App\Models\JobType;
 use App\Models\SavedJob;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -489,4 +493,43 @@ class AccountController extends Controller
     {
         return view('front.account.forgot-password');
     }
-}
+
+    public function processForgotPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('account.forgot.password')
+                ->withInput($request->only('email'))
+                ->withErrors($validator);
+        }
+
+        $generatedPasswordResetToken = Str::random(50);
+
+        DB::table('password_reset_tokens')->where('email', $request->email)->delete();
+
+        DB::table('password_reset_tokens')->insert([
+            'email' => $request->email,
+            'token' => $generatedPasswordResetToken,
+            'created_at' => now(),
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+        $actionUrl = env('APP_URL') . '/account/reset-password/' . $generatedPasswordResetToken;
+
+        $mailData = [
+            'token' => $generatedPasswordResetToken,
+            'user' => $user,
+            'actionUrl' => $actionUrl,
+        ];
+
+        Mail::to($request->email)->send(new PasswordResetEmail($mailData));
+
+        return redirect()
+            ->route('account.forgot.password')
+            ->with('success', 'Password reset link has been sent to your email.');
+    }
+
