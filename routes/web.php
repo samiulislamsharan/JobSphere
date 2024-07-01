@@ -70,6 +70,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
         Route::post('/register-user', [AccountController::class, 'registerUser'])->name('user.register');
         Route::get('/forgot-password', [AccountController::class, 'forgotPassword'])->name('forgot.password');
         Route::post('/process-forgot-password', [AccountController::class, 'processForgotPassword'])->name('process.forgot.password');
+        Route::get('/reset-password/{token}', [AccountController::class, 'resetPassword'])->name('reset.password');
     });
 
     // authenticated routes
