@@ -533,3 +533,15 @@ class AccountController extends Controller
             ->with('success', 'Password reset link has been sent to your email.');
     }
 
+    public function resetPassword($tokenString)
+    {
+        $token = DB::table('password_reset_tokens')->where('token', $tokenString)->first();
+
+        if ($token == NULL) {
+            return redirect()
+                ->route('account.forgot.password')
+                ->with('error', 'Invalid password reset token!');
+        }
+
+        return view('front.account.reset-password', compact('tokenString'));
+    }
