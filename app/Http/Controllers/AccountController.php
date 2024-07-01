@@ -484,4 +484,9 @@ class AccountController extends Controller
             'message' => $message,
         ]);
     }
+
+    public function forgotPassword()
+    {
+        return view('front.account.forgot-password');
+    }
 }
