@@ -43,8 +43,8 @@ class HomeController extends Controller
             'front.home',
             compact(
                 'categories',
-                'featuredJobs',
                 'latestJobs',
+                'featuredJobs',
                 'searchCategories'
             )
         );
