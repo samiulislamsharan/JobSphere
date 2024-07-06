@@ -19,40 +19,40 @@ JobSphere is a job portal application built with Laravel 10.
 
 1. **Clone the repository:**
 
-   ```sh
+   ```powershell
    git clone https://github.com/samiulislamsharan/JobSphere.git
    cd JobSphere
    ```
 2. **Install dependencies:**
 
-   ```php-template
+   ```powershell
    composer install
    npm install
    npm run dev
    ```
 3. **Copy the example environment file and update the environment variables:**
 
-   ```sh
+   ```powershell
    cp .env.example .env
    ```
 4. **Generate an application key:**
 
-   ```sh
+   ```powershell
    php artisan key:generate
    ```
 5. **Run the database migrations:**
 
-   ```sh
+   ```powershell
    php artisan migrate
    ```
 6. **Seed the database with test data (optional):**
 
-   ```sh
+   ```powershell
    php artisan db:seed
    ```
 7. **Serve the application:**
 
-   ```sh
+   ```powershell
    php artisan serve
    ```
 
@@ -66,7 +66,7 @@ Ensure to set up your `.env` file with the correct configuration for your databa
 
 To run the application, use the following command:
 
-```php
+```powershell
 php artisan serve
 ```
 
@@ -76,7 +76,7 @@ The application will be accessible at http://localhost:8000.
 
 To run the tests, use the following command:
 
-```
+```powershell
 php artisan test
 
 ```
