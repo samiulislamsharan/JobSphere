@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    public function login()
+    {
+        return view('front.account.login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('account.login.index');
+    }
+
     public function registration()
     {
         return view('front.account.registration');
@@ -47,18 +59,6 @@ class AuthController extends Controller
                 'errors' => $validator->errors(),
             ]);
         }
-    }
-
-    public function login()
-    {
-        return view('front.account.login');
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-
-        return redirect()->route('account.login.index');
     }
 
     public function authenticate(Request $request)
