@@ -95,6 +95,6 @@ Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
             Route::post('/remove-saved-job', [AccountController::class, 'removeSavedJob'])->name('saved.remove');
         });
 
-        Route::get('/logout', [AccountController::class, 'logout'])->name('logout');
+        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     });
 });
