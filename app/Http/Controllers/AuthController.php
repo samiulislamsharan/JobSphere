@@ -298,3 +298,31 @@ class AuthController extends Controller
             }
         }
     }
+
+    public function resendOtp(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+        $otpData = EmailVerification::where('email', $request->email)->first();
+
+        $currentTime = time();
+        $time = $otpData->created_at;
+
+        if ($currentTime >= $time && $time >= $currentTime - (90 + 5)) { //90 seconds
+            return response()->json(
+                [
+                    'success' => false,
+                    'msg' => 'Please try after some time'
+                ]
+            );
+        } else {
+            $this->sendOtp($user); //OTP SEND
+
+            return response()->json(
+                [
+                    'success' => true,
+                    'msg' => 'OTP has been sent'
+                ]
+            );
+        }
+    }
+}
