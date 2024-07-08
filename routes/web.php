@@ -76,6 +76,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
         Route::post('/process-reset-password', [AuthController::class, 'processResetPassword'])->name('process.reset.password');
 
         Route::get('/verification/{id}', [AuthController::class, 'verification'])->name('verification');
+        Route::post('/verified', [AuthController::class, 'verifiedOtp'])->name('otp.verified');
     });
 
     // authenticated routes
