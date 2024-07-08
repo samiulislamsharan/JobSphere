@@ -47,12 +47,13 @@ class AuthController extends Controller
             $user->password = bcrypt($request->password);
             $user->save();
 
-            session()->flash('success', 'User registered successfully!');
+            $message = 'User registered successfully!';
+            // session()->flash('success', $message);
 
-            return response()->json([
-                'status' => 200,
-                'message' => 'User registered successfully!',
-            ]);
+            // redirect to verification page with flash message
+            return redirect()
+                ->route('account.verification', $user->id)
+                ->with('success', $message);
         } else {
             return response()->json([
                 'status' => false,
