@@ -34,8 +34,13 @@
                                     <div class="input-group">
                                         <input type="email" name="email" id="email" placeholder="Enter Email"
                                             class="form-control" value="{{ Auth::user()->email }}">
-                                        <button class="btn btn-outline-dark" type="button"
-                                            id="button-addon2">Verify</button>
+                                        @if (Auth::user()->is_verified == 0)
+                                            <button class="btn btn-outline-dark" type="button" id="button-verify-email"
+                                                onclick="verifyEmail({{ Auth::user()->id }})">Verify</button>
+                                        @else
+                                            <button class="btn btn-outline-success" type="button"
+                                                disabled>Verified</button>
+                                        @endif
                                     </div>
                                     <p></p>
                                 </div>
@@ -230,5 +235,23 @@
                 }
             });
         });
+
+        function verifyEmail(userId) {
+            $.ajax({
+                type: "GET",
+                url: "{{ route('account.verification', Auth::user()->id) }}",
+                data: {
+                    user_id: userId
+                },
+                dataType: "JSON",
+                success: function(response) {
+                    if (response.status == true) {
+                        alert(response.message);
+                    } else {
+                        alert(response.message);
+                    }
+                }
+            });
+        }
     </script>
 @endsection
