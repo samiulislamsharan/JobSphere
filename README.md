@@ -26,8 +26,6 @@ JobSphere is a job portal application built with Laravel 10.
 
    ```powershell
    composer install
-   npm install
-   npm run dev
    ```
 3. **Copy the example environment file and update the environment variables:**
 
