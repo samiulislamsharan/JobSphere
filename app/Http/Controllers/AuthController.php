@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EmailVerification as MailEmailVerification;
 use App\Mail\PasswordResetEmail;
+use App\Models\EmailVerification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -233,4 +235,29 @@ class AuthController extends Controller
         $this->sendOtp($user);
 
         return view('front.account.otp-verification', compact('email'));
+    }
+
+    public function sendOtp($user)
+    {
+        $otp = rand(100000, 999999);
+        $time = time();
+
+        EmailVerification::updateOrCreate(
+            ['email' => $user->email],
+            [
+                'email' => $user->email,
+                'otp' => $otp,
+                'created_at' => $time
+            ]
+        );
+
+        $mailData = [
+            'otp' => $otp,
+            'name' => $user->name,
+            'email' => $user->email,
+            'title' => 'Email Verification OTP',
+            'subject' => 'Email Verification OTP',
+        ];
+
+        Mail::to($user->email)->send(new MailEmailVerification($mailData));
     }
