@@ -219,4 +219,18 @@ class AuthController extends Controller
             ->route('account.login.index')
             ->with('success', 'Password changed successfully.');
     }
-}
+
+    public function verification($id)
+    {
+        $user = User::where('id', $id)->first();
+
+        if (!$user || $user->is_verified == 1) {
+            return redirect('/');
+        }
+
+        $email = $user->email;
+
+        $this->sendOtp($user);
+
+        return view('front.account.otp-verification', compact('email'));
+    }
