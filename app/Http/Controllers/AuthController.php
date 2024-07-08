@@ -68,10 +68,19 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+        $userCredential = $request->only('email', 'password');
+        $userData = User::where('email', $request->email)->first();
 
-        // if the form data is valid then attempt to login the user
-        if ($validator->passes()) {
-            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        // redirect to verification page if the user is not verified
+        if ($userData && $userData->is_verified == 0) {
+            $this->sendOtp($userData);
+
+            return redirect()
+                ->route('account.verification', $userData->id)
+                ->with('error', 'Please verify your email address!');
+        } else if ($validator->passes()) {
+            // if the form data is valid then attempt to login the user
+            if (Auth::attempt($userCredential)) {
                 return redirect()->route('account.profile.show');
             } else {
                 return redirect()
