@@ -261,3 +261,40 @@ class AuthController extends Controller
 
         Mail::to($user->email)->send(new MailEmailVerification($mailData));
     }
+
+    public function verifiedOtp(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+        $otpData = EmailVerification::where('otp', $request->otp)->first();
+
+        if (!$otpData) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'msg' => 'You entered wrong OTP'
+                ]
+            );
+        } else {
+            $currentTime = time();
+            $time = $otpData->created_at;
+
+            if ($currentTime >= $time && $time >= $currentTime - (90 + 5)) { //90 seconds
+                User::where('id', $user->id)->update([
+                    'is_verified' => 1
+                ]);
+                return response()->json(
+                    [
+                        'success' => true,
+                        'msg' => 'Mail has been verified'
+                    ]
+                );
+            } else {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'msg' => 'Your OTP has been Expired'
+                    ]
+                );
+            }
+        }
+    }
