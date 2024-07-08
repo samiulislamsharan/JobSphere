@@ -77,6 +77,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
 
         Route::get('/verification/{id}', [AuthController::class, 'verification'])->name('verification');
         Route::post('/verified', [AuthController::class, 'verifiedOtp'])->name('otp.verified');
+        Route::get('/resend-otp', [AuthController::class, 'resendOtp'])->name('otp.resend');
     });
 
     // authenticated routes
