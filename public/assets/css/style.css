@@ -10811,6 +10811,37 @@ footer .nav-link {
 }
 /* '' */
 
-.pagination span{
+.pagination span {
     font-size: inherit;
+}
+
+.otp-field {
+    flex-direction: row;
+    column-gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.otp-field input {
+    height: 45px;
+    width: 42px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1.125rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.otp-field input:focus {
+    box-shadow: 0 1px 0 rgba(var(--theme-primary), 0.2);
+}
+
+.otp-field input::-webkit-inner-spin-button,
+.otp-field input::-webkit-outer-spin-button {
+    display: none;
+}
+
+.resend {
+    font-size: 12px;
 }
