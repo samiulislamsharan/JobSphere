@@ -69,10 +69,13 @@ Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
         Route::post('/auth', [AuthController::class, 'authenticate'])->name('auth');
         Route::get('/register', [AuthController::class, 'registration'])->name('registration.index');
         Route::post('/register-user', [AuthController::class, 'registerUser'])->name('user.register');
+
         Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
         Route::post('/process-forgot-password', [AuthController::class, 'processForgotPassword'])->name('process.forgot.password');
         Route::get('/reset-password/{token}', [AuthController::class, 'resetPassword'])->name('reset.password');
         Route::post('/process-reset-password', [AuthController::class, 'processResetPassword'])->name('process.reset.password');
+
+        Route::get('/verification/{id}', [AuthController::class, 'verification'])->name('verification');
     });
 
     // authenticated routes
