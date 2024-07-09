@@ -3376,8 +3376,8 @@ fieldset:disabled .btn {
 .list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+    background-color: var(--bs-white);
+    border-color: var(--theme-primary);
 }
 .list-group-item + .list-group-item {
     border-top-width: 0;
@@ -3412,7 +3412,7 @@ fieldset:disabled .btn {
     border-radius: 0;
 }
 .list-group-flush > .list-group-item {
-    border-width: 0 0 1px;
+    border-width: 0 0 1.5px;
 }
 .list-group-flush > .list-group-item:last-child {
     border-bottom-width: 0;
