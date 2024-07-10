@@ -43,4 +43,32 @@ class CategoryController extends Controller
             'message' => $message,
         ]);
     }
+
+    public function setStatus(Request $request)
+    {
+        $id = $request->id;
+        $category = Category::find($id);
+
+        if ($category == NULL) {
+            $message = 'Either category was deleted or you are not authorized to change status of this category!';
+
+            session()->flash('error', $message);
+
+            return response()->json([
+                'status' => false,
+                'message' => $message,
+            ]);
+        }
+
+        $category->status = !$category->status;
+        $category->save();
+
+        $message = 'Category status changed successfully!';
+        session()->flash('success', $message);
+
+        return response()->json([
+            'status' => true,
+            'message' => $message,
+        ]);
+    }
 }
