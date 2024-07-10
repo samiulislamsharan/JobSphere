@@ -100,6 +100,10 @@
     </section>
 @endsection
 
+@section('customModal')
+    @include('front.layouts.shared.file-picker-modal')
+@endsection
+
 @section('customJS')
     <script type="text/javascript">
         $("#user-form").submit(function(e) {
