@@ -116,7 +116,8 @@
                         id: id,
                     },
                     success: function(response) {
-                        window.location.href = "{{ route('admin.categories.index') }}";
+                        location.reload();
+                        // console.log(response);
                     }
                 });
             }
