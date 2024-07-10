@@ -51,13 +51,14 @@
                                                 <td>{{ $category->id }}</td>
                                                 <td>{{ $category->name }}</td>
                                                 <td>
-                                                    @if ($category->status == 1)
-                                                        <div class="job-status text-capitalize text-success">
-                                                            Active</div>
-                                                    @else
-                                                        <div class="job-status text-capitalize text-danger">
-                                                            Inactive</div>
-                                                    @endif
+                                                    <select data-category-id="{{ $category->id }}"
+                                                        class="form-select {{ $category->status == 1 ? 'text-success' : 'text-danger' }}"
+                                                        style="width: auto;" aria-label="Category status dropdown menu">
+                                                        <option {{ $category->status == 1 ? 'selected' : '' }}
+                                                            value="1" class="text-success">Active</option>
+                                                        <option {{ $category->status == 0 ? 'selected' : '' }}
+                                                            value="0" class="text-danger">Inactive</option>
+                                                    </select>
                                                 </td>
                                                 <td>
                                                     <div class="action-dots d-flex">
