@@ -9,12 +9,17 @@
                 class="list-group-item d-flex justify-content-between p-3 {{ Route::is('admin.users.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.users.index') }}">Users</a>
             </li>
-            <li class="list-group-item d-flex justify-content-between p-3 {{ Route::is('admin.jobs.index') ? 'active' : '' }}">
+            <li
+                class="list-group-item d-flex justify-content-between p-3 {{ Route::is('admin.jobs.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.jobs.index') }}">Jobs</a>
             </li>
             <li
                 class="list-group-item d-flex justify-content-between p-3 {{ Route::is('admin.job.applications.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.job.applications.index') }}">Job Applications</a>
+            </li>
+            <li
+                class="list-group-item d-flex justify-content-between p-3 {{ Route::is('admin.categories.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.categories.index') }}">Categories</a>
             </li>
             <li class="list-group-item d-flex justify-content-center p-3">
                 <a href="{{ route('account.logout') }}">Logout</a>
