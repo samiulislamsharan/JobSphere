@@ -27,7 +27,7 @@
 
     @yield('content')
 
-    @include('front.layouts.shared.file-picker-modal')
+    @yield('customModal')
 
     @include('front.layouts.shared.footer')
 
