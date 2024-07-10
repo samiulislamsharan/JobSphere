@@ -121,5 +121,30 @@
                 });
             }
         }
+
+        $(document).ready(function() {
+            $('select[data-category-id]').change(function() {
+                var categoryId = $(this).data('category-id');
+                var newStatus = $(this).val();
+
+                $.ajax({
+                    url: "{{ route('admin.categories.set-status', $category->id) }}",
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {
+                        id: categoryId,
+                        status: newStatus,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        location.reload();
+                        // console.log(response);
+                    },
+                    error: function(xhr, status, error) {
+                        alert("An error occurred.Please try again.");
+                    }
+                });
+            });
+        });
     </script>
 @endsection
