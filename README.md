@@ -8,6 +8,8 @@ JobSphere is a job portal application built with Laravel 10.
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Configuration](#configuration)
+    - [Database Configuration](#database-configuration)
+    - [SMTP Configuration](#smtp-configuration)
   - [Usage](#usage)
     - [Running the Application](#running-the-application)
   - [Folder Structure](#folder-structure)
@@ -56,6 +58,30 @@ JobSphere is a job portal application built with Laravel 10.
 ## Configuration
 
 Ensure to set up your `.env` file with the correct configuration for your database, mail, and other services.
+
+### Database Configuration
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3307
+DB_DATABASE=job-sphere-db
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+### SMTP Configuration
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="no-reply@job-sphere.com"
+MAIL_FROM_NAME="${APP_NAME}"
+```
 
 ## Usage
 
