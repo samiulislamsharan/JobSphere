@@ -108,6 +108,10 @@
     </section>
 @endsection
 
+@section('customModal')
+    @include('admin.categories.shared.edit-modal')
+@endsection
+
 @section('customJS')
     <script type="text/javascript">
         function deleteCategory(id) {
