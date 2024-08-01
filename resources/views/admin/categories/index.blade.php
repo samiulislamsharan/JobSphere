@@ -155,5 +155,15 @@
                 });
             });
         });
+
+        $(document).on("click", "#btnUpdateCategoryForm", function() {
+            let id = $(this).data("category-id");
+            let name = $(this).data("category-name");
+
+            $("#update_id").val(id);
+            $("#update_category_name").val(name);
+
+            $("#editCategoryModal").modal("show");
+        });
     </script>
 @endsection
