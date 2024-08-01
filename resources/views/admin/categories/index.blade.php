@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="categoryTable">
                                 <table class="table">
                                     <thead class="bg-light">
                                         <tr>
