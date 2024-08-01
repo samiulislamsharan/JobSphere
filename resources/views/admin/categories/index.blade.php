@@ -78,7 +78,8 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class="dropdown-item" href="#"
+                                                                <a class="dropdown-item" id="deleteItem"
+                                                                    data-id="{{ $category->id }}" href="#"
                                                                     onclick="deleteCategory({{ $category->id }})">
                                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                                     Delete
