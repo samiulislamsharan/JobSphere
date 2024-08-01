@@ -67,13 +67,16 @@
                                                             <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-end">
-                                                            {{-- <li>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('admin.jobs.edit', $job->id) }}">
+                                                            <li>
+                                                                <a class="dropdown-item" id="btnUpdateCategoryForm"
+                                                                    href="#" data-bs-toggle="modal"
+                                                                    data-bs-target="#editCategoryModal"
+                                                                    data-category-id="{{ $category->id }}"
+                                                                    data-category-name="{{ $category->name }}">
                                                                     <i class="fa fa-edit" aria-hidden="true"></i>
                                                                     Edit
                                                                 </a>
-                                                            </li> --}}
+                                                            </li>
                                                             <li>
                                                                 <a class="dropdown-item" href="#"
                                                                     onclick="deleteCategory({{ $category->id }})">
