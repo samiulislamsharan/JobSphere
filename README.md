@@ -12,6 +12,8 @@ JobSphere is a job portal application built with Laravel 10.
         -   [SMTP Configuration](#smtp-configuration)
     -   [Usage](#usage)
         -   [Running the Application](#running-the-application)
+    -   [System Design](#system-design)
+        -   [Class Diagram](#class-diagram)
     -   [Folder Structure](#folder-structure)
     -   [Features](#features)
     -   [Contribution](#contribution)
@@ -101,6 +103,12 @@ php artisan serve
 ```
 
 The application will be accessible at http://localhost:8000.
+
+## System Design
+
+### Class Diagram
+
+![job-shpere-class-diagram](https://github.com/user-attachments/assets/75dfcfcc-727f-4db9-b33b-801dd509ce6c)
 
 ## Folder Structure
 
