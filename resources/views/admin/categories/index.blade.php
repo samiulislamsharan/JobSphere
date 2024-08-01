@@ -165,5 +165,64 @@
 
             $("#editCategoryModal").modal("show");
         });
+
+        $(document).on("click", "#btnUpdateCategory", function(e) {
+            e.preventDefault();
+
+            let update_id = $("#update_id").val();
+            let update_name = $("#update_category_name").val();
+
+            $("button[type=submit]").prop('disabled', true);
+
+            $.ajax({
+                type: "PUT",
+                url: "{{ route('admin.categories.update', ':id') }}".replace(':id', update_id),
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    // update_id: update_id,
+                    update_name: update_name,
+                },
+                dataType: "JSON",
+                success: function(response) {
+                    if (response.status == true) {
+                        $("button[type=submit]").prop('disabled', false);
+
+                        console.log(response);
+
+                        $("#update_category_name").removeClass('is-invalid')
+                            .siblings('p')
+                            .removeClass('invalid-feedback')
+                            .html('')
+
+                        $("#editCategoryModal").modal("hide");
+
+                        $("#updateCategoryForm")[0].reset();
+
+                        $("#categoryTable").load(location.href + " #categoryTable");
+
+                        // goto category index link
+                        // window.location.href = "{{ route('admin.categories.index') }}";
+                    } else {
+                        var errors = response.errors;
+
+                        // console.log(errors);
+
+                        if (errors.update_name) {
+                            $("#update_category_name")
+                                .addClass('is-invalid')
+                                .siblings('p')
+                                .addClass('invalid-feedback')
+                                .html(errors.update_name);
+                        } else {
+                            $("#update_category_name")
+                                .removeClass('is-invalid')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+                        }
+                    }
+                }
+            });
+        });
     </script>
 @endsection
