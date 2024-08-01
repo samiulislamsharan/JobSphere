@@ -47,7 +47,7 @@
 
                                     <tbody class="border-0">
                                         @forelse ($categories as $category)
-                                            <tr class="active">
+                                            <tr class="">
                                                 <td>{{ $category->id }}</td>
                                                 <td>{{ $category->name }}</td>
                                                 <td>
