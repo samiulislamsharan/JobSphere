@@ -56,6 +56,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
         Route::get('/', [CategoryController::class, 'index'])->name('index');
         Route::delete('/', [CategoryController::class, 'destroy'])->name('destroy');
+        Route::put('/update/{id}', [CategoryController::class, 'update'])->name('update');
         Route::post('/set-status/{id}', [CategoryController::class, 'setStatus'])->name('set-status');
     });
 });
