@@ -21,6 +21,12 @@
                 class="list-group-item d-flex justify-content-between p-3 {{ Route::is('admin.categories.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.categories.index') }}">Categories</a>
             </li>
+            <li
+                class="list-group-item d-flex justify-content-between p-3 {{ Route::is('admin.chatbot.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.chatbot.index') }}">
+                    <i class="fa fa-robot me-1"></i> AI Chatbot
+                </a>
+            </li>
             <li class="list-group-item d-flex justify-content-center p-3">
                 <a href="{{ route('account.logout') }}">Logout</a>
             </li>

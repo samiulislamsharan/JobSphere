@@ -114,6 +114,22 @@
 
 @section('customJS')
     <script type="text/javascript">
+        function urlWithRndQueryParam(url, paramName) {
+            const ulrArr = url.split('#');
+            const urlQry = ulrArr[0].split('?');
+            const usp = new URLSearchParams(urlQry[1] || '');
+            usp.set(paramName || '_z', `${Date.now()}`);
+            urlQry[1] = usp.toString();
+            ulrArr[0] = urlQry.join('?');
+            return ulrArr.join('#');
+        }
+
+        function handleHardReload(url) {
+            window.location.href = urlWithRndQueryParam(url);
+            // This is to ensure reload with url's having '#'
+            window.location.reload();
+        }
+
         function deleteCategory(id) {
             if (confirm('Are you sure you want to delete this category?')) {
                 $.ajax({
@@ -165,6 +181,44 @@
 
             $("#editCategoryModal").modal("show");
         });
+
+        /*
+            $(document).on("click", "#btnUpdateCategory", function(e) {
+                    // e.preventDefault();
+
+                    let update_id = $("#update_id").val();
+                    let update_name = $("#update_category_name").val();
+
+                    // console.log(id, name);
+
+                    $.ajax({
+                        type: "PUT",
+                        url: "{{ route('admin.categories.update', $category->id) }}",
+                        data: {
+                            update_id: update_id,
+                            update_name: update_name,
+                        },
+                        dataType: "JSON",
+                        success: function(response) {
+                            console.log(response);
+
+                            if (response.status == 'true') {
+                                $("#editCategoryModal").modal("hide");
+
+                                $("#updateCategoryForm")[0].reset();
+
+                                // $("#categoryTable").load(location.href + " #categoryTable");
+                                // goto category index link
+                                window.location.href = '{{ url()->current() }}';
+                            } else {
+                                var errors = response.errors;
+
+                                console.log(errors);
+                            }
+                        }
+                    });
+                });
+        */
 
         $(document).on("click", "#btnUpdateCategory", function(e) {
             e.preventDefault();

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ChatbotController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\JobApplicationController;
 use App\Http\Controllers\Admin\JobController;
@@ -58,6 +59,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
         Route::delete('/', [CategoryController::class, 'destroy'])->name('destroy');
         Route::put('/update/{id}', [CategoryController::class, 'update'])->name('update');
         Route::post('/set-status/{id}', [CategoryController::class, 'setStatus'])->name('set-status');
+    });
+
+    // AI Chatbot routes
+    Route::group(['prefix' => 'chatbot', 'as' => 'chatbot.'], function () {
+        Route::get('/', [ChatbotController::class, 'index'])->name('index');
+        Route::post('/chat', [ChatbotController::class, 'chat'])->name('chat');
+        Route::post('/clear-history', [ChatbotController::class, 'clearHistory'])->name('clear-history');
     });
 });
 
